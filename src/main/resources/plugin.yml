@@ -1,0 +1,100 @@
+name: SimplePlayerUtils
+version: '${project.version}'
+main: adhdmc.simpleplayerutils.SimplePlayerUtils
+api-version: 1.19
+authors: [ Rhythmic, Peashooter101 ]
+description: Utils for players
+commands:
+  fly:
+    description: allows creative flight
+    permission: spu.command.fly
+  flyspeed:
+    description: allows changing flyspeed
+    permission: spu.command.flyspeed
+  walkspeed:
+    description: allows changing walkspeed
+    permission: spu.command.walkspeed
+  anvil:
+    description: opens an anvil
+    permission: spu.command.anvil
+  cartography:
+    description: opens a cartography table
+    permission: spu.command.cartography
+    aliases: [cart, carto]
+  craft:
+    description: opens a crafting menu
+    permission: spu.command.crafting
+    aliases: [workbench, wb, bench]
+  grindstone:
+    description: opens a grindstone
+    permission: spu.command.grindstone
+  loom:
+    description: opens a loom
+    permission: spu.command.loom
+  smithing:
+    description: opens a smithing table
+    permission: spu.command.smithing
+  stonecutter:
+    description: opens a stonecutter
+    permission: spu.command.stonecutter
+permissions:
+  spu.command.fly:
+    description: Allows a player to toggle their personal flight
+    default: op
+  spu.command.fly.other:
+    description: Allows a player to toggle other players' flight
+    default: op
+  spu.command.flyspeed:
+    description: Allows a player to set their own flyspeed
+    default: op
+  spu.command.flyspeed.other:
+    description: Allows a player to set other players' flyspeeds
+    default: op
+  spu.command.walkspeed:
+    description: Allows a player to set their own walkspeed
+    default: op
+  spu.command.walkspeed.other:
+    description: Allows a player to set other players' walkspeeds
+    default: op
+  spu.command.anvil:
+    description: Allows a player to use the anvil menu
+    default: op
+  spu.command.anvil.other:
+    description: Allows a player to open an anvil menu for another player
+    default: op
+  spu.command.cartography:
+    description: Allows a player to open a cartography table
+    default: op
+  spu.command.cartography.other:
+    description: Allows a player to open a cartography table for another player
+    default: op
+  spu.command.crafting:
+    description: Allows a player to open a crafting menu
+    default: op
+  spu.command.crafting.other:
+    description: Allows a player to open a crafting menu for other players
+    default: op
+  spu.command.grindstone:
+    description: Allows a player to open a grindstone
+    default: op
+  spu.command.grindstone.other:
+    description: Allows a player to open a grindstone for another player
+    default: op
+  spu.command.loom:
+    description: Allows a player to open a loom
+    default: op
+  spu.command.loom.other:
+    description: Allows a player to open a loom for another player
+    default: op
+  spu.command.smithing:
+    description: Allows a player to open a smithing table
+    default: op
+  spu.command.smithing.other:
+    description: Allows a player to open a smithing table for another player
+    default: op
+  spu.command.stonecutter:
+    description: Allows a player to open a stonecutter
+    default: op
+  spu.command.stonecutter.other:
+    description: Allows a player to open a stonecutter for another player
+    default: op
