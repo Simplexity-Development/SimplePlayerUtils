@@ -11,9 +11,11 @@ commands:
   flyspeed:
     description: allows changing flyspeed
     permission: spu.command.flyspeed
+    aliases: [fspeed]
   walkspeed:
     description: allows changing walkspeed
     permission: spu.command.walkspeed
+    aliases: [wspeed]
   anvil:
     description: opens an anvil
     permission: spu.command.anvil
@@ -28,73 +30,94 @@ commands:
   grindstone:
     description: opens a grindstone
     permission: spu.command.grindstone
+    aliases: [grind]
   loom:
     description: opens a loom
     permission: spu.command.loom
   smithing:
     description: opens a smithing table
     permission: spu.command.smithing
+    aliases: [smith]
   stonecutter:
     description: opens a stonecutter
     permission: spu.command.stonecutter
+  enderchest:
+    description: opens an enderchest
+    permission: spu.command.enderchest
+    aliases: [ec, ender, end]
+  rename:
+    description: renames an item
+    permission: spu.command.rename
 permissions:
   spu.command.fly:
     description: Allows a player to toggle their personal flight
     default: op
-  spu.command.fly.other:
+  spu.command.other.fly:
     description: Allows a player to toggle other players' flight
     default: op
   spu.command.flyspeed:
     description: Allows a player to set their own flyspeed
     default: op
-  spu.command.flyspeed.other:
+  spu.command.other.flyspeed:
     description: Allows a player to set other players' flyspeeds
     default: op
   spu.command.walkspeed:
     description: Allows a player to set their own walkspeed
     default: op
-  spu.command.walkspeed.other:
+  spu.command.other.walkspeed:
     description: Allows a player to set other players' walkspeeds
     default: op
-  spu.command.anvil:
+  spu.command.inventory.anvil:
     description: Allows a player to use the anvil menu
     default: op
-  spu.command.anvil.other:
+  spu.command.other.inventory.anvil:
     description: Allows a player to open an anvil menu for another player
     default: op
-  spu.command.cartography:
+  spu.command.inventory.cartography:
     description: Allows a player to open a cartography table
     default: op
-  spu.command.cartography.other:
+  spu.command.other.inventory.cartography:
     description: Allows a player to open a cartography table for another player
     default: op
-  spu.command.crafting:
+  spu.command.inventory.crafting:
     description: Allows a player to open a crafting menu
     default: op
-  spu.command.crafting.other:
+  spu.command.other.inventory.crafting:
     description: Allows a player to open a crafting menu for other players
     default: op
-  spu.command.grindstone:
+  spu.command.inventory.grindstone:
     description: Allows a player to open a grindstone
     default: op
-  spu.command.grindstone.other:
+  spu.command.other.inventory.grindstone:
     description: Allows a player to open a grindstone for another player
     default: op
-  spu.command.loom:
+  spu.command.inventory.loom:
     description: Allows a player to open a loom
     default: op
-  spu.command.loom.other:
+  spu.command.other.inventory.loom:
     description: Allows a player to open a loom for another player
     default: op
-  spu.command.smithing:
+  spu.command.inventory.smithing:
     description: Allows a player to open a smithing table
     default: op
-  spu.command.smithing.other:
+  spu.command.other.inventory.smithing:
     description: Allows a player to open a smithing table for another player
     default: op
-  spu.command.stonecutter:
+  spu.command.inventory.stonecutter:
     description: Allows a player to open a stonecutter
     default: op
-  spu.command.stonecutter.other:
+  spu.command.other.inventory.stonecutter:
     description: Allows a player to open a stonecutter for another player
+    default: op
+  spu.command.inventory.enderchest:
+    description: Allows a player to open their own enderchest
+    default: op
+  spu.command.other.inventory.enderchest:
+    description: Allows a player to open another player's enderchest for them (does not look into their enderchest)
+    default: op
+  spu.command.rename.basic:
+    description: Allows a player to /rename their items, with no color codes
+    default: op
+  spu.command.rename.minimessage:
+    description: Allows a player to /rename their items using minimessage formatting
     default: op

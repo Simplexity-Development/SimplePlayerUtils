@@ -1,6 +1,7 @@
 package adhdmc.simpleplayerutils;
 
 import adhdmc.simpleplayerutils.commands.FlyspeedCommand;
+import adhdmc.simpleplayerutils.commands.RenameCommand;
 import adhdmc.simpleplayerutils.commands.WalkspeedCommand;
 import adhdmc.simpleplayerutils.commands.inventories.*;
 import adhdmc.simpleplayerutils.commands.FlyCommand;
@@ -24,10 +25,10 @@ public final class SimplePlayerUtils extends JavaPlugin {
         this.getCommand("loom").setExecutor(new LoomCommand());
         this.getCommand("smithing").setExecutor(new SmithingCommand());
         this.getCommand("stonecutter").setExecutor(new StonecutterCommand());
+        this.getCommand("enderchest").setExecutor(new EnderchestCommand());
         this.getCommand("flyspeed").setExecutor(new FlyspeedCommand());
         this.getCommand("walkspeed").setExecutor(new WalkspeedCommand());
-        // Plugin startup logic
-
+        this.getCommand("rename").setExecutor(new RenameCommand());
     }
 
     public static SimplePlayerUtils getInstance() {

@@ -91,8 +91,10 @@ public class FlyCommand implements CommandExecutor, TabCompleter {
                         Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
             } else {
                 player.sendMessage(miniMessage.deserialize(SPUMessage.FLY_ENABLED_BY_OTHER.getMessage(),
+                        Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
                         Placeholder.component("sender", sendingPlayerName)));
                 sendingPlayer.sendMessage(miniMessage.deserialize(SPUMessage.FLY_ENABLED_OTHER.getMessage(),
+                        Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
                         Placeholder.component("user", player.displayName())));
             }
             return;
