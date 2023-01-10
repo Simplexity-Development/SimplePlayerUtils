@@ -30,7 +30,7 @@ public class RenameCommand implements CommandExecutor, TabCompleter {
             return false;
         }
         //Check perms
-        if ((player.hasPermission(SPUPerm.RENAME_BASIC.getPerm()) || player.hasPermission(SPUPerm.RENAME_MINIMESSAGE.getPerm()))) {
+        if (!(player.hasPermission(SPUPerm.RENAME_BASIC.getPerm()) || player.hasPermission(SPUPerm.RENAME_MINIMESSAGE.getPerm()))) {
             sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
                     Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
             return false;
