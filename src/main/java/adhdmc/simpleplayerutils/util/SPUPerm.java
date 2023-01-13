@@ -6,6 +6,7 @@ public enum SPUPerm {
     //Commands
     AFK(new Permission("spu.command.afk")),
     AFK_OTHERS(new Permission("spu.command.other.afk")),
+    HAT(new Permission("spu.command.hat")),
     FLY(new Permission("spu.command.fly")),
     FLY_OTHERS(new Permission("spu.command.other.fly")),
     FLYSPEED(new Permission("spu.command.flyspeed")),

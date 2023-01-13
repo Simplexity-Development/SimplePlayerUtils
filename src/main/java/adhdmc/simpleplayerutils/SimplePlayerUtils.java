@@ -1,10 +1,8 @@
 package adhdmc.simpleplayerutils;
 
-import adhdmc.simpleplayerutils.commands.FlyspeedCommand;
-import adhdmc.simpleplayerutils.commands.RenameCommand;
-import adhdmc.simpleplayerutils.commands.WalkspeedCommand;
+import adhdmc.simpleplayerutils.commands.*;
 import adhdmc.simpleplayerutils.commands.inventories.*;
-import adhdmc.simpleplayerutils.commands.FlyCommand;
+import adhdmc.simpleplayerutils.listeners.AFKListener;
 import adhdmc.simpleplayerutils.listeners.FlyListeners;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +15,19 @@ public final class SimplePlayerUtils extends JavaPlugin {
     public void onEnable() {
         instance = this;
         this.getServer().getPluginManager().registerEvents(new FlyListeners(), this);
+        this.getServer().getPluginManager().registerEvents(new AFKListener(), this);
+        registerCommands();
+    }
+
+    public static SimplePlayerUtils getInstance() {
+        return instance;
+    }
+
+    public static MiniMessage getMiniMessage() {
+        return miniMessage;
+    }
+
+    private void registerCommands() {
         this.getCommand("fly").setExecutor(new FlyCommand());
         this.getCommand("craft").setExecutor(new CraftCommand());
         this.getCommand("anvil").setExecutor(new AnvilCommand());
@@ -29,18 +40,7 @@ public final class SimplePlayerUtils extends JavaPlugin {
         this.getCommand("flyspeed").setExecutor(new FlyspeedCommand());
         this.getCommand("walkspeed").setExecutor(new WalkspeedCommand());
         this.getCommand("rename").setExecutor(new RenameCommand());
-    }
-
-    public static SimplePlayerUtils getInstance() {
-        return instance;
-    }
-
-    public static MiniMessage getMiniMessage() {
-        return miniMessage;
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+        this.getCommand("hat").setExecutor(new HatCommand());
+        this.getCommand("afk").setExecutor(new AFKCommand());
     }
 }

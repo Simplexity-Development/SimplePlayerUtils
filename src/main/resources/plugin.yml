@@ -5,6 +5,12 @@ api-version: 1.19
 authors: [ Rhythmic, Peashooter101 ]
 description: Utils for players
 commands:
+  hat:
+    description: puts something on your head
+    permission: spu.command.hat
+  afk:
+    description: allows afk toggling
+    permission: spu.command.afk
   fly:
     description: allows creative flight
     permission: spu.command.fly
@@ -49,6 +55,15 @@ commands:
     description: renames an item
     permission: spu.command.rename
 permissions:
+  spu.command.hat:
+    description: Lets you put something on your head
+    default: op
+  spu.command.afk:
+    description: Allows a player to toggle their AFK status
+    default: op
+  spu.command.other.afk:
+    description: Allows a player to toggle other players' afk status
+    default: op
   spu.command.fly:
     description: Allows a player to toggle their personal flight
     default: op
