@@ -4,6 +4,8 @@ main: adhdmc.simpleplayerutils.SimplePlayerUtils
 api-version: 1.19
 authors: [ Rhythmic, Peashooter101 ]
 description: Utils for players
+softdepend:
+  - PlaceholderAPI
 commands:
   hat:
     description: puts something on your head
