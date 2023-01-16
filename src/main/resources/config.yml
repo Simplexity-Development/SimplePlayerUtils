@@ -1,0 +1,30 @@
+#yay config
+
+#Minimum walk/fly someone can set with the walk/fly speed commands, cannot be less than -10
+min-flyspeed: -10
+min-walkspeed: -10
+#Max speed someone can set with the walk/fly speed commands, cannot be greater than 10
+max-flyspeed: 10
+max-walkspeed: 10
+#Should chatting take someone out of AFK? (Purpur-specific feature)
+chatting-disables-afk: true
+#Materials that should not be allowed to be used in /hat
+hat-blocked-materials:
+  - AIR
+  - SPAWNER
+  - COMMAND_BLOCK
+  - STRUCTURE_VOID
+#Should this list act like a whitelist instead of a blacklist
+list-is-whitelist: false
+#Max characters allowed in /rename (not including minimessage tags)
+rename-max-characters: 50
+#Sounds for crafting inventories, if you would like no sound, please write "none"
+craft-open-sound: BLOCK_BAMBOO_WOOD_BREAK
+anvil-open-sound: BLOCK_ANVIL_USE
+cartography-open-sound: UI_CARTOGRAPHY_TABLE_TAKE_RESULT
+stonecutter-open-sound: UI_STONECUTTER_TAKE_RESULT
+smithing-open-sound: BLOCK_SMITHING_TABLE_USE
+grindstone-open-sound: BLOCK_GRINDSTONE_USE
+loom-open-sound: ENTITY_VILLAGER_WORK_SHEPHERD
+enderchest-open-sound: BLOCK_ENDER_CHEST_OPEN
+

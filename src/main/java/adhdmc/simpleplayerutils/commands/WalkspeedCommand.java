@@ -10,6 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -123,10 +124,15 @@ public class WalkspeedCommand implements CommandExecutor, TabCompleter {
                     Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
             return false;
         }
+        FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();
+        float maxSpeed = config.getInt("max-walkspeed");
+        float minSpeed = config.getInt("min-walkspeed");
+        maxSpeed = maxSpeed/10;
+        minSpeed = minSpeed/10;
         float speed = Float.parseFloat(args[0]);
         speed = speed/10;
         //Divide the number by 10, so it actually fits in the -1 to 1 range, if it still doesn't fit, error and return
-        if (!((speed > -1) && (speed < 1))) {
+        if (!((speed > -1) && (speed > minSpeed) && (speed < maxSpeed) && (speed < 1))) {
             playerSender.sendMessage(miniMessage.deserialize(SPUMessage.SPEED_NUMBER_ERROR.getMessage(),
                     Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
             return false;

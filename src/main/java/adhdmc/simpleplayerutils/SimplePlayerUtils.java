@@ -3,11 +3,16 @@ package adhdmc.simpleplayerutils;
 import adhdmc.simpleplayerutils.commands.*;
 import adhdmc.simpleplayerutils.commands.inventories.*;
 import adhdmc.simpleplayerutils.listeners.AFKListener;
+import adhdmc.simpleplayerutils.listeners.ChatListener;
 import adhdmc.simpleplayerutils.listeners.FlyListeners;
+import adhdmc.simpleplayerutils.util.Defaults;
 import adhdmc.simpleplayerutils.util.SPUExpansion;
+import adhdmc.simpleplayerutils.util.SPUSound;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.logging.Logger;
 
 public final class SimplePlayerUtils extends JavaPlugin {
     private static SimplePlayerUtils instance;
@@ -35,6 +40,13 @@ public final class SimplePlayerUtils extends JavaPlugin {
         } else {
             this.getLogger().severe("Both purpur and placeholder API are needed for Simple Player Utils placeholders, placeholders will be unusable until both of these are present");
         }
+        Defaults.setConfigDefaults();
+        saveDefaultConfig();
+        Defaults.fillBlacklist();
+        SPUSound.setConfiguredSounds();
+    }
+    public static Logger SPULogger() {
+        return SimplePlayerUtils.getInstance().getLogger();
     }
 
     public static SimplePlayerUtils getInstance() {
@@ -51,6 +63,7 @@ public final class SimplePlayerUtils extends JavaPlugin {
 
     private void registerPurpurClasses(){
         this.getServer().getPluginManager().registerEvents(new AFKListener(), this);
+        this.getServer().getPluginManager().registerEvents(new ChatListener(), this);
         this.getCommand("afk").setExecutor(new AFKCommand());
     }
 
@@ -68,6 +81,6 @@ public final class SimplePlayerUtils extends JavaPlugin {
         this.getCommand("walkspeed").setExecutor(new WalkspeedCommand());
         this.getCommand("rename").setExecutor(new RenameCommand());
         this.getCommand("hat").setExecutor(new HatCommand());
-
+        this.getCommand("spureload").setExecutor(new SPUReload());
     }
 }

@@ -34,7 +34,8 @@ public enum SPUPerm {
     RENAME_BASIC(new Permission("spu.command.rename.basic")),
     RENAME_MINIMESSAGE(new Permission("spu.command.rename.minimessage")),
     LORE_BASIC(new Permission("spu.command.lore.basic")),
-    LORE_MINIMESSAGE(new Permission("spu.command.lore.minimessage"));
+    LORE_MINIMESSAGE(new Permission("spu.command.lore.minimessage")),
+    RELOAD(new Permission("spu.reload"));
 
     final Permission perm;
 

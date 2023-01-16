@@ -1,6 +1,8 @@
 package adhdmc.simpleplayerutils.util;
 
+import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import org.bukkit.Sound;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public enum SPUSound {
     CRAFTING_SOUND(Sound.BLOCK_BAMBOO_WOOD_BREAK),
@@ -11,12 +13,43 @@ public enum SPUSound {
     GRINDSTONE_SOUND(Sound.BLOCK_GRINDSTONE_USE),
     LOOM_SOUND(Sound.ENTITY_VILLAGER_WORK_SHEPHERD),
     ENDERCHEST_SOUND(Sound.BLOCK_ENDER_CHEST_OPEN);
-    final Sound sound;
+    Sound sound;
 
     SPUSound(Sound sound) {
         this.sound = sound;
     }
+    private void setSound(Sound sound) {
+        this.sound = sound;
+    }
     public Sound getSound(){
         return sound;
+    }
+
+    public static void setConfiguredSounds(){
+        FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();
+        CRAFTING_SOUND.setSound(checkSound(config.getString("craft-open-sound")));
+        ANVIL_SOUND.setSound(checkSound(config.getString("anvil-open-sound")));
+        CARTOGRAPHY_SOUND.setSound(checkSound(config.getString("cartography-open-sound")));
+        STONECUTTER_SOUND.setSound(checkSound(config.getString("smithing-open-sound")));
+        GRINDSTONE_SOUND.setSound(checkSound(config.getString("grindstone-open-sound")));
+        LOOM_SOUND.setSound(checkSound(config.getString("loom-open-sound")));
+        ENDERCHEST_SOUND.setSound(checkSound(config.getString("enderchest-open-sound")));
+    }
+
+    private static Sound checkSound(String string){
+        if (string == null) {
+            return null;
+        }
+        if (string.equalsIgnoreCase("none")) {
+            return null;
+        }
+        Sound soundToCheck;
+        try {
+            soundToCheck = Sound.valueOf(string);
+        } catch (ClassCastException e) {
+            SimplePlayerUtils.SPULogger().warning("Sound " + string + " unable to be cast to sound, please be sure you are using a sound from https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html, or write \"none\" for no sound. Setting sound to null.");
+            return null;
+        }
+        return soundToCheck;
     }
 }
