@@ -33,6 +33,8 @@ public enum SPUPerm {
     DYE_HEX(new Permission("spu.command.dye.hex")),
     RENAME_BASIC(new Permission("spu.command.rename.basic")),
     RENAME_MINIMESSAGE(new Permission("spu.command.rename.minimessage")),
+    RENAME_MAX_CHAR_BYPASS(new Permission("spu.command.rename.character.max.bypass")),
+    RENAME_REGEX_BYPASS(new Permission("spu.command.rename.regex.bypass")),
     LORE_BASIC(new Permission("spu.command.lore.basic")),
     LORE_MINIMESSAGE(new Permission("spu.command.lore.minimessage")),
     RELOAD(new Permission("spu.reload"));

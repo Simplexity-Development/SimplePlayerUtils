@@ -36,6 +36,12 @@ public class RenameCommand implements CommandExecutor, TabCompleter {
             return false;
         }
         String renameString = String.join(" ", Arrays.stream(args).skip(0).collect(Collectors.joining(" ")));
+        String strippedInput = miniMessage.stripTags(renameString);
+        if ((strippedInput.length() > SimplePlayerUtils.getInstance().getConfig().getInt("rename-max-characters")) &&
+                !player.hasPermission(SPUPerm.RENAME_MAX_CHAR_BYPASS.getPerm())) {
+            player.sendMessage(miniMessage.deserialize(SPUMessage.RENAME_ERROR_INPUT_TOO_LONG.getMessage(),
+                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+        }
         ItemStack heldItem = player.getInventory().getItemInMainHand();
         ItemMeta heldItemMeta = heldItem.getItemMeta();
         Component currentItemName;
@@ -56,7 +62,6 @@ public class RenameCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         if (player.hasPermission(SPUPerm.RENAME_BASIC.getPerm())) {
-            String strippedInput = miniMessage.stripTags(renameString);
             newItemName = miniMessage.deserialize(strippedInput);
             heldItemMeta.displayName(newItemName);
             heldItem.setItemMeta(heldItemMeta);

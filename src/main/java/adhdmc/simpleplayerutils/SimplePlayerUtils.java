@@ -8,13 +8,16 @@ import adhdmc.simpleplayerutils.listeners.FlyListeners;
 import adhdmc.simpleplayerutils.util.Defaults;
 import adhdmc.simpleplayerutils.util.SPUExpansion;
 import adhdmc.simpleplayerutils.util.SPUSound;
-import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
 
 public final class SimplePlayerUtils extends JavaPlugin {
+    //todo:Make a locale
+    //todo:Add regex for /rename
+    //todo:Add lore command
+    //todo:
     private static SimplePlayerUtils instance;
     private static final MiniMessage miniMessage = MiniMessage.miniMessage();
     private boolean purpurLoaded = true;

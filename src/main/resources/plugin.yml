@@ -141,3 +141,6 @@ permissions:
   spu.command.rename.minimessage:
     description: Allows a player to /rename their items using minimessage formatting
     default: op
+  spu.command.rename.character.max.bypass:
+    description: Allows a player to bypass the configured max character value for /rename
+    default: op

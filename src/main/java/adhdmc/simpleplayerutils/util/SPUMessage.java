@@ -1,5 +1,7 @@
 package adhdmc.simpleplayerutils.util;
 
+import adhdmc.simpleplayerutils.SimplePlayerUtils;
+
 public enum SPUMessage {
     PLUGIN_PREFIX("<white>[<gradient:aqua:dark_aqua>SimplePlayerUtils<reset><white>]<reset>"),
     ENABLED("Enabled"),
@@ -47,6 +49,7 @@ public enum SPUMessage {
     STONECUTTER_COMMAND_OTHER("<plugin_prefix> <gray>Stonecutter opened for <user>"),
     GRINDSTONE_COMMAND_OTHER("<plugin_prefix> <gray>Grindstone opened for <user>"),
     RENAME_COMMAND_FEEDBACK("<plugin_prefix> <green>You have renamed your item from <oldname> to <newname>"),
+    RENAME_ERROR_INPUT_TOO_LONG("<plugin_prefix> <red>Sorry, the limit for the /rename command is " + SimplePlayerUtils.getInstance().getConfig().getInt("rename-max-characters") + " characters, excluding formatting and color tags."),
     DYE_COMMAND_FEEDBACK("<plugin_prefix> <green>You have dyed your <item> <color><color_unparsed>"),
     DYE_ERROR_CANNOT_DYE("<plugin_prefix> <red>Sorry, <item> cannot be dyed, please hold a dyable item"),
     FLY_ENABLED_SELF("<plugin_prefix> <green>Your flight has been enabled"),
