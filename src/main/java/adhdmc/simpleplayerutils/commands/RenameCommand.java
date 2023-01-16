@@ -41,6 +41,7 @@ public class RenameCommand implements CommandExecutor, TabCompleter {
                 !player.hasPermission(SPUPerm.RENAME_MAX_CHAR_BYPASS.getPerm())) {
             player.sendMessage(miniMessage.deserialize(SPUMessage.RENAME_ERROR_INPUT_TOO_LONG.getMessage(),
                     Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+            return false;
         }
         ItemStack heldItem = player.getInventory().getItemInMainHand();
         ItemMeta heldItemMeta = heldItem.getItemMeta();
