@@ -1,7 +1,8 @@
 package adhdmc.simpleplayerutils.commands;
 
 import adhdmc.simpleplayerutils.SimplePlayerUtils;
-import adhdmc.simpleplayerutils.util.Defaults;
+import adhdmc.simpleplayerutils.config.Defaults;
+import adhdmc.simpleplayerutils.config.LocaleBuilder;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.SPUSound;
@@ -26,6 +27,8 @@ public class SPUReload implements CommandExecutor, TabCompleter {
             return false;
         }
         SimplePlayerUtils.getInstance().reloadConfig();
+        LocaleBuilder.getInstance().reloadConfig();
+        LocaleBuilder.getInstance().loadLocaleMessages();
         Defaults.fillBlacklist();
         SPUSound.setConfiguredSounds();
         sender.sendMessage(miniMessage.deserialize(SPUMessage.CONFIG_RELOADED.getMessage(),

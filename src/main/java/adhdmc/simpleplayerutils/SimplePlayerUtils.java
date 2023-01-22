@@ -2,10 +2,11 @@ package adhdmc.simpleplayerutils;
 
 import adhdmc.simpleplayerutils.commands.*;
 import adhdmc.simpleplayerutils.commands.inventories.*;
+import adhdmc.simpleplayerutils.config.LocaleBuilder;
 import adhdmc.simpleplayerutils.listeners.AFKListener;
 import adhdmc.simpleplayerutils.listeners.ChatListener;
 import adhdmc.simpleplayerutils.listeners.FlyListeners;
-import adhdmc.simpleplayerutils.util.Defaults;
+import adhdmc.simpleplayerutils.config.Defaults;
 import adhdmc.simpleplayerutils.util.SPUExpansion;
 import adhdmc.simpleplayerutils.util.SPUSound;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -44,6 +45,7 @@ public final class SimplePlayerUtils extends JavaPlugin {
             this.getLogger().severe("Both purpur and placeholder API are needed for Simple Player Utils placeholders, placeholders will be unusable until both of these are present");
         }
         Defaults.setConfigDefaults();
+        LocaleBuilder.getInstance();
         saveDefaultConfig();
         Defaults.fillBlacklist();
         SPUSound.setConfiguredSounds();

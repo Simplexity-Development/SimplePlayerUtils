@@ -1,4 +1,4 @@
-package adhdmc.simpleplayerutils.util;
+package adhdmc.simpleplayerutils.config;
 
 import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import org.bukkit.Material;

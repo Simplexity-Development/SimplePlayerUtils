@@ -1,7 +1,7 @@
 package adhdmc.simpleplayerutils.commands;
 
 import adhdmc.simpleplayerutils.SimplePlayerUtils;
-import adhdmc.simpleplayerutils.util.Defaults;
+import adhdmc.simpleplayerutils.config.Defaults;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import net.kyori.adventure.text.minimessage.MiniMessage;
