@@ -44,8 +44,11 @@ public enum SPUMessage {
     SMITHING_COMMAND_OTHER("<plugin_prefix> <gray>Smithing table opened for <user>"),
     STONECUTTER_COMMAND_OTHER("<plugin_prefix> <gray>Stonecutter opened for <user>"),
     GRINDSTONE_COMMAND_OTHER("<plugin_prefix> <gray>Grindstone opened for <user>"),
-    RENAME_COMMAND_FEEDBACK("<plugin_prefix> <green>You have renamed your item from <oldname> to <newname>"),
-    RENAME_ERROR_INPUT_TOO_LONG("<plugin_prefix> <red>Sorry, the limit for the /rename command is " + SimplePlayerUtils.getInstance().getConfig().getInt("rename-max-characters") + " characters, excluding formatting and color tags."),
+    TRASH_INVENTORY_NAME("<red>Trash bin"),
+    TRASH_COMMAND_OTHER("<plugin_prefix> <gray>Trash bin opened for <user>"),
+    TRASH_COMMAND_FEEDBACK("<plugin_prefix> <gray>Your trashed items have been deleted"),
+    RENAME_COMMAND_FEEDBACK("<plugin_prefix> <green>You have renamed your item to <newname>"),
+    RENAME_ERROR_INPUT_TOO_LONG("<plugin_prefix> <red>Sorry, the limit for the /rename command is <int> characters, excluding formatting and color tags."),
     FLY_ENABLED_SELF("<plugin_prefix> <green>Your flight has been enabled"),
     FLY_DISABLED_SELF("<plugin_prefix> <gray>Your flight has been disabled"),
     FLY_ENABLED_OTHER("<plugin_prefix> <green>You have enabled flight for <user>"),
@@ -68,7 +71,7 @@ public enum SPUMessage {
     FLYSPEED_RESET_OTHER("<plugin_prefix> <green><user>'s flyspeed has been reset"),
     FLYSPEED_SET_BY_OTHER("<plugin_prefix> <green>Your flyspeed has been set to <value> by <sender>"),
     FLYSPEED_RESET_BY_OTHER("<plugin_prefix> <green>Your flyspeed has been reset by <sender>"),
-    SPEED_NUMBER_ERROR("<plugin_prefix> <red>Please use a number between -10 and 10")
+    SPEED_NUMBER_ERROR("<plugin_prefix> <red>Please use a number between <min> and <max>")
 
     ;
     String message;

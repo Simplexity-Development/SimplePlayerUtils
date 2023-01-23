@@ -8,6 +8,8 @@ max-flyspeed: 10
 max-walkspeed: 10
 #Should chatting take someone out of AFK? (Purpur-specific feature)
 chatting-disables-afk: true
+#Should /hat avoid swapping off items with binding?
+hat-respects-binding-enchant: true
 #Materials that should not be allowed to be used in /hat
 hat-blocked-materials:
   - AIR
@@ -27,4 +29,5 @@ smithing-open-sound: BLOCK_SMITHING_TABLE_USE
 grindstone-open-sound: BLOCK_GRINDSTONE_USE
 loom-open-sound: ENTITY_VILLAGER_WORK_SHEPHERD
 enderchest-open-sound: BLOCK_ENDER_CHEST_OPEN
+trash-open-sound: BLOCK_BARREL_OPEN
 

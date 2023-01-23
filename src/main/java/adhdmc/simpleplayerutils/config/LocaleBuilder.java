@@ -107,7 +107,7 @@ public class LocaleBuilder {
             config.addDefault("second","second");
             config.addDefault("seconds","seconds");
             config.addDefault("config-reloaded","<plugin_prefix> <gold>Simple Player Utils Config has been reloaded");
-            config.addDefault("error-general","<plugin_prefix> <red>Sorry, that didn't seem to work. Please check that your sytax is correct, and that you have the proper permissions, and try again.");
+            config.addDefault("error-general","<plugin_prefix> <red>Sorry, that didn't seem to work. Please check that your syntax is correct, and that you have the proper permissions, and try again.");
             config.addDefault("error-no-permission","<plugin_prefix> <red>Sorry but you do not have permission to use this command");
             config.addDefault("error-only-player","<red>Only a player may execute this command.");
             config.addDefault("error-no-valid-player-supplied","<plugin_prefix> <red>No valid player was supplied. <name> is not the name of a valid online player, please check your spelling and try again");
@@ -122,7 +122,10 @@ public class LocaleBuilder {
             config.addDefault("smithing-command-other","<plugin_prefix> <gray>Smithing table opened for <user>");
             config.addDefault("stonecutter-command-other","<plugin_prefix> <gray>Stonecutter opened for <user>");
             config.addDefault("grindstone-command-other","<plugin_prefix> <gray>Grindstone opened for <user>");
-            config.addDefault("rename-command-feedback","<plugin_prefix> <green>You have renamed your item from <oldname> to <newname>");
+            config.addDefault("trash-inventory-name", "<red>Trash bin");
+            config.addDefault("trash-command-other","<plugin_prefix> <gray>Trash bin opened for <user>");
+            config.addDefault("trash-command-feedback","<plugin_prefix> <gray>Your trashed items have been deleted");
+            config.addDefault("rename-command-feedback","<plugin_prefix> <green>You have renamed your item to <newname>");
             config.addDefault("rename-error-input-too-long","<plugin_prefix> <red>Sorry, the limit for the /rename command is <int> characters, excluding formatting and color tags.");
             config.addDefault("fly-enabled-self","<plugin_prefix> <green>Your flight has been enabled");
             config.addDefault("fly-disabled-self","<plugin_prefix> <gray>Your flight has been disabled");
@@ -146,7 +149,7 @@ public class LocaleBuilder {
             config.addDefault("flyspeed-reset-other","<plugin_prefix> <green><user>'s flyspeed has been reset");
             config.addDefault("flyspeed-set-by-other","<plugin_prefix> <green>Your flyspeed has been set to <value> by <sender>");
             config.addDefault("flyspeed-reset-by-other","<plugin_prefix> <green>Your flyspeed has been reset by <sender>");
-            config.addDefault("speed-number-error","<plugin_prefix> <red>Please use a number between -10 and 10");
+            config.addDefault("speed-number-error","<plugin_prefix> <red>Please use a number between <min> and <max>");
 
         }
 }

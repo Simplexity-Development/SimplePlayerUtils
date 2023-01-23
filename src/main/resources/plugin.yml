@@ -56,6 +56,10 @@ commands:
     description: opens an enderchest
     permission: spu.command.enderchest
     aliases: [ec, ender, end]
+  trash:
+    description: opens an inventory that will delete items on closing
+    permission: spu.command.trash
+    aliases: [disposal, garbage, lava]
   rename:
     description: renames an item
     permission: spu.command.rename
@@ -134,6 +138,12 @@ permissions:
     default: op
   spu.command.other.inventory.enderchest:
     description: Allows a player to open another player's enderchest for them (does not look into their enderchest)
+    default: op
+  spu.command.trash:
+    description: Allows a player to open an inventory to throw away items
+    default: op
+  spu.command.other.trash:
+    description: Allows a player to open a trash menu for other players
     default: op
   spu.command.rename.basic:
     description: Allows a player to /rename their items, with no color codes

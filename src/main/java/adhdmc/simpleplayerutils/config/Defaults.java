@@ -18,6 +18,7 @@ public class Defaults {
         config.addDefault("max-flyspeed", 10);
         config.addDefault("max-walkspeed", 10);
         config.addDefault("chatting-disables-afk", true);
+        config.addDefault("hat-respects-binding-enchant", true);
         config.addDefault("hat-blocked-materials", List.of("AIR","SPAWNER", "COMMAND_BLOCK", "STRUCTURE_VOID"));
         config.addDefault("list-is-whitelist", false);
         config.addDefault("rename-max-characters", 50);

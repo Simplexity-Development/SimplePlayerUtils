@@ -11,6 +11,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -36,18 +37,19 @@ public class HatCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_PERMISSION.getMessage()));
             return false;
         }
+        FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();
         ItemStack handItem = player.getInventory().getItemInMainHand();
         ItemStack helmetItem = player.getInventory().getHelmet();
         if (helmetItem != null) {
             ItemMeta helmetMeta = helmetItem.getItemMeta();
-            if (helmetMeta.hasEnchant(Enchantment.BINDING_CURSE)) {
+            if (config.getBoolean("hat-respects-binding-enchant") && helmetMeta.hasEnchant(Enchantment.BINDING_CURSE)) {
                 player.sendMessage(miniMessage.deserialize(SPUMessage.HAT_ERROR_BINDING.getMessage(),
                         Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
                 return false;
             }
         }
         Material handItemType = handItem.getType();
-        boolean whitelist = SimplePlayerUtils.getInstance().getConfig().getBoolean("list-is-whitelist");
+        boolean whitelist = config.getBoolean("list-is-whitelist");
         if ((!whitelist && blockedHats.contains(handItemType)) ||
                 (whitelist && !blockedHats.contains(handItemType))) {
             player.sendMessage(miniMessage.deserialize(SPUMessage.HAT_ERROR_BLOCKED_ITEM.getMessage(),

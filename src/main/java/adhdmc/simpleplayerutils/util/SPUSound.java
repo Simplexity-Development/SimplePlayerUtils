@@ -12,7 +12,8 @@ public enum SPUSound {
     SMITHING_SOUND(Sound.BLOCK_SMITHING_TABLE_USE),
     GRINDSTONE_SOUND(Sound.BLOCK_GRINDSTONE_USE),
     LOOM_SOUND(Sound.ENTITY_VILLAGER_WORK_SHEPHERD),
-    ENDERCHEST_SOUND(Sound.BLOCK_ENDER_CHEST_OPEN);
+    ENDERCHEST_SOUND(Sound.BLOCK_ENDER_CHEST_OPEN),
+    TRASH_SOUND(Sound.BLOCK_BARREL_OPEN);
     Sound sound;
 
     SPUSound(Sound sound) {
@@ -30,10 +31,12 @@ public enum SPUSound {
         CRAFTING_SOUND.setSound(checkSound(config.getString("craft-open-sound")));
         ANVIL_SOUND.setSound(checkSound(config.getString("anvil-open-sound")));
         CARTOGRAPHY_SOUND.setSound(checkSound(config.getString("cartography-open-sound")));
-        STONECUTTER_SOUND.setSound(checkSound(config.getString("smithing-open-sound")));
+        STONECUTTER_SOUND.setSound(checkSound(config.getString("stonecutter-open-sound")));
+        SMITHING_SOUND.setSound(checkSound(config.getString("smithing-open-sound")));
         GRINDSTONE_SOUND.setSound(checkSound(config.getString("grindstone-open-sound")));
         LOOM_SOUND.setSound(checkSound(config.getString("loom-open-sound")));
         ENDERCHEST_SOUND.setSound(checkSound(config.getString("enderchest-open-sound")));
+        TRASH_SOUND.setSound(checkSound(config.getString("trash-open-sound")));
     }
 
     private static Sound checkSound(String string){

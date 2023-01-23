@@ -50,7 +50,7 @@ public class FlyspeedCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(miniMessage.deserialize(SPUMessage.FLYSPEED_RESET_OTHER.getMessage(),
                         Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
                         Placeholder.component("user", player.displayName())));
-                player.sendMessage(miniMessage.deserialize(SPUMessage.FLYSPEED_RESET_OTHER.getMessage(),
+                player.sendMessage(miniMessage.deserialize(SPUMessage.FLYSPEED_RESET_BY_OTHER.getMessage(),
                         Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
                         Placeholder.component("sender", senderName)));
                 return true;
