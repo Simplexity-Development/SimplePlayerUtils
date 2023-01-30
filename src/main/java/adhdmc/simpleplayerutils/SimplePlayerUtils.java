@@ -64,7 +64,7 @@ public final class SimplePlayerUtils extends JavaPlugin {
     private void registerConfigs() {
         Defaults.setConfigDefaults();
         saveDefaultConfig();
-        Defaults.fillBlacklist();
+        Defaults.fillBlacklists();
         SPUSound.setConfiguredSounds();
         LocaleBuilder.getInstance();
     }

@@ -29,7 +29,7 @@ public class SPUReload implements CommandExecutor, TabCompleter {
         SimplePlayerUtils.getInstance().reloadConfig();
         LocaleBuilder.getInstance().reloadConfig();
         LocaleBuilder.getInstance().loadLocaleMessages();
-        Defaults.fillBlacklist();
+        Defaults.fillBlacklists();
         SPUSound.setConfiguredSounds();
         sender.sendMessage(miniMessage.deserialize(SPUMessage.CONFIG_RELOADED.getMessage(),
                 Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));

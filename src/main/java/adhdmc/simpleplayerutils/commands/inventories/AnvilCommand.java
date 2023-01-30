@@ -4,6 +4,8 @@ import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.SPUSound;
+import adhdmc.simpleplayerutils.util.Util;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Location;
@@ -18,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class AnvilCommand implements CommandExecutor, TabCompleter {
+
     MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
 
     @Override
@@ -29,14 +32,14 @@ public class AnvilCommand implements CommandExecutor, TabCompleter {
         }
         //If the sender does not have permission to either open an Anvil menu for themselves, or others, error and return
         if (!(sender.hasPermission(SPUPerm.ANVIL.getPerm()) || sender.hasPermission(SPUPerm.ANVIL_OTHER.getPerm()))) {
-            sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+            sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
+                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
             return false;
         }
         //If the sender doesn't have perms to open an anvil menu for themselves, and supplies no other player, error and return
         if (args.length == 0 && !sender.hasPermission(SPUPerm.ANVIL.getPerm())) {
-            sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+            sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
+                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
             return false;
         }
         //If sender has permission and no other player is provided, open menu and return
@@ -50,9 +53,8 @@ public class AnvilCommand implements CommandExecutor, TabCompleter {
             Player player = SimplePlayerUtils.getInstance().getServer().getPlayer(args[0]);
             //If player doesn't exist, error and return
             if (player == null) {
-                sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_VALID_PLAYER_SUPPLIED.getMessage(),
-                        Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
-                        Placeholder.parsed("name", args[0])));
+                sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_VALID_PLAYER_SUPPLIED.getMessage(),
+                        miniMessage.deserialize(args[0]), Component.empty(), 0, 0, 0, "", ""));
                 return false;
             }
             //if Player exists, open their anvil menu and return
@@ -60,8 +62,8 @@ public class AnvilCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         //If someone has made it this far, there's an error, send them an error and return.
-        sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_GENERAL.getMessage(),
-                Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+        sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_GENERAL.getMessage(),
+                Component.empty(), Component.empty(), 0, 0, 0, "", ""));
         return false;
     }
 
@@ -70,9 +72,8 @@ public class AnvilCommand implements CommandExecutor, TabCompleter {
         player.openAnvil(playerLocation, true);
         player.playSound(playerLocation, SPUSound.ANVIL_SOUND.getSound(), 1, 1);
         if (sender != null) {
-            sender.sendMessage(miniMessage.deserialize(SPUMessage.ANVIL_COMMAND_OTHER.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
-                    Placeholder.component("user", player.displayName())));
+            sender.sendMessage(Util.messageParsing(SPUMessage.ANVIL_COMMAND_OTHER.getMessage(),
+                    player.displayName(), Component.empty(), 0, 0, 0, "", ""));
         }
 
     }

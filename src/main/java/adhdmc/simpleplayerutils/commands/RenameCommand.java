@@ -4,6 +4,7 @@ import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.command.Command;
@@ -22,6 +23,8 @@ import java.util.stream.Collectors;
 
 public class RenameCommand implements CommandExecutor, TabCompleter {
     MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
+
+    Component emptyPlayer = Component.empty();
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         //Console cannot run this
@@ -55,7 +58,7 @@ public class RenameCommand implements CommandExecutor, TabCompleter {
         }
         Component newItemName;
         if (player.hasPermission(SPUPerm.RENAME_MINIMESSAGE.getPerm())) {
-            newItemName = miniMessage.deserialize(renameString);
+            newItemName = miniMessage.deserialize(renameString).decoration(TextDecoration.ITALIC, false);
             heldItemMeta.displayName(newItemName);
             heldItem.setItemMeta(heldItemMeta);
             player.sendMessage(miniMessage.deserialize(SPUMessage.RENAME_COMMAND_FEEDBACK.getMessage(),
