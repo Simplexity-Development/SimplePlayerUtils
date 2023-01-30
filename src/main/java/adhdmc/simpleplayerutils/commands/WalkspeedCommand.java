@@ -3,6 +3,7 @@ package adhdmc.simpleplayerutils.commands;
 import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
+import adhdmc.simpleplayerutils.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -39,9 +40,8 @@ public class WalkspeedCommand implements CommandExecutor, TabCompleter {
             //Match a player to the first argument, if there is no player, error and return
             Player player = SimplePlayerUtils.getInstance().getServer().getPlayer(args[0]);
             if (player == null) {
-                sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_VALID_PLAYER_SUPPLIED.getMessage(),
-                        Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
-                        Placeholder.parsed("name", args[0])));
+                sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_VALID_PLAYER_SUPPLIED.getMessage(),
+                        miniMessage.deserialize(args[0]), Component.empty(), 0, 0, 0, "", ""));
                 return false;
             }
             //If the argument after the player name is 'reset', set their Walk speed to the default, and let both the sender and player know, and return
@@ -93,8 +93,8 @@ public class WalkspeedCommand implements CommandExecutor, TabCompleter {
         }
         //If player doesn't have permission to set their own speed, error and return
         if (!sender.hasPermission(SPUPerm.WALKSPEED.getPerm())) {
-            sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+            sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
+                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
             return false;
         }
         //If there are any console command senders at this point, they are running a command wrong, error and return

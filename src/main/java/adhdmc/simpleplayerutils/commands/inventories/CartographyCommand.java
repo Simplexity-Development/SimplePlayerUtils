@@ -7,7 +7,6 @@ import adhdmc.simpleplayerutils.util.SPUSound;
 import adhdmc.simpleplayerutils.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -52,7 +51,7 @@ public class CartographyCommand implements CommandExecutor, TabCompleter {
             Player player = SimplePlayerUtils.getInstance().getServer().getPlayer(args[0]);
             //If player doesn't exist, error and return
             if (player == null) {
-                sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
+                sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_VALID_PLAYER_SUPPLIED.getMessage(),
                         miniMessage.deserialize(args[0]), Component.empty(), 0, 0, 0, "", ""));
                 return false;
             }

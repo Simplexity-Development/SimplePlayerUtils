@@ -125,6 +125,7 @@ public class LocaleBuilder {
             config.addDefault("trash-inventory-name", "<red>Trash bin");
             config.addDefault("trash-command-other","<plugin_prefix> <gray>Trash bin opened for <target>");
             config.addDefault("trash-command-feedback","<plugin_prefix> <gray>Your trashed items have been deleted");
+            config.addDefault("trash-blacklist-items-dropped", "<plugin_prefix> <gold>Hey! You had some items in the trash that are not allowed to be trashed, they've been dropped back on the ground");
             config.addDefault("rename-command-feedback","<plugin_prefix> <green>You have renamed your item to <input>");
             config.addDefault("rename-error-input-too-long","<plugin_prefix> <red>Sorry, the limit for the /rename command is <int> characters, excluding formatting and color tags.");
             config.addDefault("fly-enabled-self","<plugin_prefix> <green>Your flight has been enabled");
@@ -150,6 +151,5 @@ public class LocaleBuilder {
             config.addDefault("flyspeed-set-by-other","<plugin_prefix> <green>Your flyspeed has been set to <value> by <initiator>");
             config.addDefault("flyspeed-reset-by-other","<plugin_prefix> <green>Your flyspeed has been reset by <initiator>");
             config.addDefault("speed-number-error","<plugin_prefix> <red>Please use a number between <min> and <max>");
-
         }
 }

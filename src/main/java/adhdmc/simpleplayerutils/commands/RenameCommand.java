@@ -3,6 +3,7 @@ package adhdmc.simpleplayerutils.commands;
 import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
+import adhdmc.simpleplayerutils.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -34,8 +35,8 @@ public class RenameCommand implements CommandExecutor, TabCompleter {
         }
         //Check perms
         if (!(player.hasPermission(SPUPerm.RENAME_BASIC.getPerm()) || player.hasPermission(SPUPerm.RENAME_MINIMESSAGE.getPerm()))) {
-            sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+            sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
+                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
             return false;
         }
         String renameString = String.join(" ", Arrays.stream(args).skip(0).collect(Collectors.joining(" ")));

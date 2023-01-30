@@ -4,6 +4,8 @@ import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import adhdmc.simpleplayerutils.config.Defaults;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
+import adhdmc.simpleplayerutils.util.Util;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
@@ -34,7 +36,8 @@ public class HatCommand implements CommandExecutor, TabCompleter {
             return false;
         }
         if (!player.hasPermission(SPUPerm.HAT.getPerm())) {
-            sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_PERMISSION.getMessage()));
+            sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
+                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
             return false;
         }
         FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();

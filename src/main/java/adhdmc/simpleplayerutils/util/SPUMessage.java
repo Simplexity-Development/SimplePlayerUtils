@@ -47,6 +47,7 @@ public enum SPUMessage {
     TRASH_INVENTORY_NAME("<red>Trash bin"),
     TRASH_COMMAND_OTHER("<plugin_prefix> <gray>Trash bin opened for <target>"),
     TRASH_COMMAND_FEEDBACK("<plugin_prefix> <gray>Your trashed items have been deleted"),
+    TRASH_BLACKLIST_ITEMS_DROPPED("<plugin_prefix> <gold>Hey! You had some items in the trash that are not allowed to be trashed, they've been dropped back on the ground"),
     RENAME_COMMAND_FEEDBACK("<plugin_prefix> <green>You have renamed your item to <input>"),
     RENAME_ERROR_INPUT_TOO_LONG("<plugin_prefix> <red>Sorry, the limit for the /rename command is <int> characters, excluding formatting and color tags."),
     FLY_ENABLED_SELF("<plugin_prefix> <green>Your flight has been enabled"),
