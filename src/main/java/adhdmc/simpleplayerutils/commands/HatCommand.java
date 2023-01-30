@@ -37,7 +37,7 @@ public class HatCommand implements CommandExecutor, TabCompleter {
         }
         if (!player.hasPermission(SPUPerm.HAT.getPerm())) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                    null, null, null, null, null, null, null));
             return false;
         }
         FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();
@@ -46,8 +46,8 @@ public class HatCommand implements CommandExecutor, TabCompleter {
         if (helmetItem != null) {
             ItemMeta helmetMeta = helmetItem.getItemMeta();
             if (config.getBoolean("hat-respects-binding-enchant") && helmetMeta.hasEnchant(Enchantment.BINDING_CURSE)) {
-                player.sendMessage(miniMessage.deserialize(SPUMessage.HAT_ERROR_BINDING.getMessage(),
-                        Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+                player.sendMessage(Util.messageParsing(SPUMessage.HAT_ERROR_BINDING.getMessage(),
+                        null, null, null, null, null, null, null));
                 return false;
             }
         }
@@ -55,15 +55,14 @@ public class HatCommand implements CommandExecutor, TabCompleter {
         boolean whitelist = config.getBoolean("list-is-whitelist");
         if ((!whitelist && blockedHats.contains(handItemType)) ||
                 (whitelist && !blockedHats.contains(handItemType))) {
-            player.sendMessage(miniMessage.deserialize(SPUMessage.HAT_ERROR_BLOCKED_ITEM.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
-                    Placeholder.parsed("item", handItemType.toString().toLowerCase(Locale.ROOT))));
+            player.sendMessage(Util.messageParsing(SPUMessage.HAT_ERROR_BLOCKED_ITEM.getMessage(),
+                    null, null, null, null, null, handItemType.toString().toLowerCase(Locale.ROOT), null));
             return false;
         }
         player.getInventory().setHelmet(handItem);
         player.getInventory().setItemInMainHand(helmetItem);
-        player.sendMessage(miniMessage.deserialize(SPUMessage.HAT_OUTPUT.getMessage(),
-                Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+        player.sendMessage(Util.messageParsing(SPUMessage.HAT_OUTPUT.getMessage(),
+                null, null, null, null, null, null, null));
         return true;
     }
 

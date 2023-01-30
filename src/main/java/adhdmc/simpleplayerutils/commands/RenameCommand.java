@@ -36,7 +36,7 @@ public class RenameCommand implements CommandExecutor, TabCompleter {
         //Check perms
         if (!(player.hasPermission(SPUPerm.RENAME_BASIC.getPerm()) || player.hasPermission(SPUPerm.RENAME_MINIMESSAGE.getPerm()))) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                    null, null, null, null, null, null, null));
             return false;
         }
         String renameString = String.join(" ", Arrays.stream(args).skip(0).collect(Collectors.joining(" ")));

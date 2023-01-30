@@ -32,13 +32,13 @@ public class AnvilCommand implements CommandExecutor, TabCompleter {
         //If the sender does not have permission to either open an Anvil menu for themselves, or others, error and return
         if (!(sender.hasPermission(SPUPerm.ANVIL.getPerm()) || sender.hasPermission(SPUPerm.ANVIL_OTHER.getPerm()))) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                    null, null, null, null, null,null,null));
             return false;
         }
         //If the sender doesn't have perms to open an anvil menu for themselves, and supplies no other player, error and return
         if (args.length == 0 && !sender.hasPermission(SPUPerm.ANVIL.getPerm())) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                    null, null, null, null, null,null,null));
             return false;
         }
         //If sender has permission and no other player is provided, open menu and return
@@ -53,7 +53,7 @@ public class AnvilCommand implements CommandExecutor, TabCompleter {
             //If player doesn't exist, error and return
             if (player == null) {
                 sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_VALID_PLAYER_SUPPLIED.getMessage(),
-                        miniMessage.deserialize(args[0]), Component.empty(), 0, 0, 0, "", ""));
+                        miniMessage.deserialize(args[0]),  null, null, null, null, null,null));
                 return false;
             }
             //if Player exists, open their anvil menu and return
@@ -62,7 +62,7 @@ public class AnvilCommand implements CommandExecutor, TabCompleter {
         }
         //If someone has made it this far, there's an error, send them an error and return.
         sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_GENERAL.getMessage(),
-                Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                null, null, null, null, null,null,null));
         return false;
     }
 
@@ -72,7 +72,7 @@ public class AnvilCommand implements CommandExecutor, TabCompleter {
         player.playSound(playerLocation, SPUSound.ANVIL_SOUND.getSound(), 1, 1);
         if (sender != null) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ANVIL_COMMAND_OTHER.getMessage(),
-                    player.displayName(), Component.empty(), 0, 0, 0, "", ""));
+                    player.displayName(),  null, null, null, null, null,null));
         }
 
     }

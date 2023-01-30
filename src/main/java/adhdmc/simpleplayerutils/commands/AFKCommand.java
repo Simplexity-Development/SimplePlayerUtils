@@ -34,13 +34,13 @@ public class AFKCommand implements CommandExecutor, TabCompleter {
         //If the sender does not have permission to either set their own afk, or others, error and return
         if (!(sender.hasPermission(SPUPerm.AFK.getPerm()) || sender.hasPermission(SPUPerm.AFK_OTHERS.getPerm()))) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                    null, null, null, null, null,null,null));
             return false;
         }
         //If the sender doesn't have perms to set their own afk, and supplies no other player, error and return
         if (args.length == 0 && !sender.hasPermission(SPUPerm.AFK.getPerm())) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                    null, null, null, null, null,null,null));
             return false;
         }
         if (args.length == 1) {
@@ -48,12 +48,12 @@ public class AFKCommand implements CommandExecutor, TabCompleter {
             Player player = SimplePlayerUtils.getInstance().getServer().getPlayer(args[0]);
             if (!sender.hasPermission(SPUPerm.AFK_OTHERS.getPerm())) {
                 sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                        Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                        null, null, null, null, null,null,null));
                 return false;
             }
             if (player == null) {
                 sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_VALID_PLAYER_SUPPLIED.getMessage(),
-                        miniMessage.deserialize(args[0]), Component.empty(), 0, 0, 0, "", ""));
+                        miniMessage.deserialize(args[0]), null, null, null, null,null,null));
                 return false;
             }
             player.setAfk(!player.isAfk());
