@@ -2,11 +2,11 @@ package adhdmc.simpleplayerutils;
 
 import adhdmc.simpleplayerutils.commands.*;
 import adhdmc.simpleplayerutils.commands.inventories.*;
+import adhdmc.simpleplayerutils.config.Defaults;
 import adhdmc.simpleplayerutils.config.LocaleBuilder;
 import adhdmc.simpleplayerutils.listeners.AFKListener;
 import adhdmc.simpleplayerutils.listeners.ChatListener;
 import adhdmc.simpleplayerutils.listeners.FlyListeners;
-import adhdmc.simpleplayerutils.config.Defaults;
 import adhdmc.simpleplayerutils.listeners.InventoryCloseListener;
 import adhdmc.simpleplayerutils.util.SPUExpansion;
 import adhdmc.simpleplayerutils.util.SPUSound;

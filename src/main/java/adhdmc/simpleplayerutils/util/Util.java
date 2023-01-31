@@ -11,7 +11,7 @@ public class Util {
 
     private static final MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
 
-    public static Component messageParsing(String message, @Nullable Component targetPlayer, @Nullable Component initiatingPlayer, @Nullable Float value, @Nullable Float min, @Nullable Float max, @Nullable String item, @Nullable String input) {
+    public static Component messageParsing(String message, @Nullable Component targetPlayer, @Nullable Component initiatingPlayer, @Nullable Double value, @Nullable Float min, @Nullable Float max, @Nullable String item, @Nullable String input) {
         if (targetPlayer == null) {
             targetPlayer = Component.empty();
         }
@@ -19,7 +19,7 @@ public class Util {
             initiatingPlayer = Component.empty();
         }
         if (value == null) {
-            value = 0f;
+            value = (double) 0;
         }
         if (min == null) {
             min = 0f;

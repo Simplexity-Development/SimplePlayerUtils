@@ -1,7 +1,5 @@
 package adhdmc.simpleplayerutils.util;
 
-import adhdmc.simpleplayerutils.SimplePlayerUtils;
-
 public enum SPUMessage {
     PLUGIN_PREFIX("<white>[<gradient:aqua:dark_aqua>SimplePlayerUtils<reset><white>]<reset>"),
     ENABLED("Enabled"),

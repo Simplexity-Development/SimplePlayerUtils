@@ -29,7 +29,7 @@ public class FlyListeners implements Listener {
         Player player = joinEvent.getPlayer();
         PersistentDataContainer playerPDC = player.getPersistentDataContainer();
         Bukkit.getScheduler().runTaskLater(SimplePlayerUtils.getInstance(), ()-> {
-            Byte playerFlyState = playerPDC.getOrDefault(flyStatus, PersistentDataType.BYTE, off);
+            byte playerFlyState = playerPDC.getOrDefault(flyStatus, PersistentDataType.BYTE, off);
             if (playerFlyState == on
                     && player.hasPermission(SPUPerm.FLY.getPerm())) {
                 player.setAllowFlight(true);

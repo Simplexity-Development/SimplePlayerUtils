@@ -5,7 +5,6 @@ import adhdmc.simpleplayerutils.util.SPUKey;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.Util;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
@@ -27,7 +26,7 @@ public class AFKCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         //If console runs this without supplying a player, error and return
-        if (args.length == 0 && !(sender instanceof Player playerSender)) {
+        if (args.length == 0 && !(sender instanceof Player)) {
             sender.sendRichMessage(SPUMessage.ERROR_ONLY_PLAYER.getMessage());
             return false;
         }

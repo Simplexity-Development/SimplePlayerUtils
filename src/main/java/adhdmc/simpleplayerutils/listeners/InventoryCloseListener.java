@@ -1,13 +1,10 @@
 package adhdmc.simpleplayerutils.listeners;
 
-import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import adhdmc.simpleplayerutils.commands.inventories.TrashCommand;
 import adhdmc.simpleplayerutils.config.Defaults;
 import adhdmc.simpleplayerutils.util.SPUMessage;
+import adhdmc.simpleplayerutils.util.SPUSound;
 import adhdmc.simpleplayerutils.util.Util;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -25,7 +22,6 @@ import java.util.UUID;
 
 public class InventoryCloseListener implements Listener {
 
-    MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
     HashMap<UUID, Inventory> inventoryHashMap = TrashCommand.getInvMap();
 
     HashSet<Material> blacklistedTrash = Defaults.getTrashBlacklist();
@@ -45,6 +41,9 @@ public class InventoryCloseListener implements Listener {
         ArrayList<ItemStack> blockedItemsToDrop = new ArrayList<>();
         //check if any items that are in the trash are blacklisted, if they are, add to arraylist
         for (ItemStack item : trashContents) {
+            if (item == null) {
+                continue;
+            }
             Material itemType = item.getType();
             if (!blacklistedTrash.contains(itemType)) {
                 continue;
@@ -59,10 +58,12 @@ public class InventoryCloseListener implements Listener {
                 playerLocation.getWorld().dropItem(playerLocation, item);
             }
             player.sendMessage(Util.messageParsing(SPUMessage.TRASH_BLACKLIST_ITEMS_DROPPED.getMessage(),
-                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                    null, null, null, null, null, null, null));
+            player.playSound(playerLocation, SPUSound.TRASH_ALERT.getSound(), 1, 1);
+        } else {
+            closeEvent.getPlayer().sendMessage(Util.messageParsing(SPUMessage.TRASH_COMMAND_FEEDBACK.getMessage(),
+                    null, null, null, null, null, null, null));
         }
-        closeEvent.getPlayer().sendMessage(Util.messageParsing(SPUMessage.TRASH_COMMAND_FEEDBACK.getMessage(),
-                Component.empty(), Component.empty(), 0, 0, 0, "", ""));
 
     }
 }

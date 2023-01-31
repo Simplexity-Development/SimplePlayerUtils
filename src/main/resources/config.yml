@@ -77,4 +77,5 @@ grindstone-open-sound: BLOCK_GRINDSTONE_USE
 loom-open-sound: ENTITY_VILLAGER_WORK_SHEPHERD
 enderchest-open-sound: BLOCK_ENDER_CHEST_OPEN
 trash-open-sound: BLOCK_BARREL_OPEN
+trash-alert: BLOCK_NOTE_BLOCK_PLING
 

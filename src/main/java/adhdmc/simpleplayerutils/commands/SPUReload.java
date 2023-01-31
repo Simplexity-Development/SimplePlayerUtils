@@ -7,9 +7,6 @@ import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.SPUSound;
 import adhdmc.simpleplayerutils.util.Util;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,12 +17,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class SPUReload implements CommandExecutor, TabCompleter {
-    MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!sender.hasPermission(SPUPerm.RELOAD.getPerm())) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Component.empty(), Component.empty(), 0, 0, 0, "", ""));
+                    null, null, null, null, null, null, null));
             return false;
         }
         SimplePlayerUtils.getInstance().reloadConfig();
@@ -33,8 +29,8 @@ public class SPUReload implements CommandExecutor, TabCompleter {
         LocaleBuilder.getInstance().loadLocaleMessages();
         Defaults.fillBlacklists();
         SPUSound.setConfiguredSounds();
-        sender.sendMessage(miniMessage.deserialize(SPUMessage.CONFIG_RELOADED.getMessage(),
-                Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+        sender.sendMessage(Util.messageParsing(SPUMessage.CONFIG_RELOADED.getMessage(),
+                null, null, null, null, null, null, null));
         return false;
     }
 

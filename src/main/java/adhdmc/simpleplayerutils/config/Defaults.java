@@ -40,6 +40,8 @@ public class Defaults {
         config.addDefault("grindstone-open-sound", "BLOCK_GRINDSTONE_USE");
         config.addDefault("loom-open-sound", "ENTITY_VILLAGER_WORK_SHEPHERD");
         config.addDefault("enderchest-open-sound", "BLOCK_ENDER_CHEST_OPEN");
+        config.addDefault("trash-open-sound", "BLOCK_BARREL_OPEN");
+        config.addDefault("trash-alert", "BLOCK_NOTE_BLOCK_PLING");
     }
 
     public static void fillBlacklists() {
