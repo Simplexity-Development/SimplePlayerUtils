@@ -13,7 +13,8 @@ public enum SPUSound {
     GRINDSTONE_SOUND(Sound.BLOCK_GRINDSTONE_USE),
     LOOM_SOUND(Sound.ENTITY_VILLAGER_WORK_SHEPHERD),
     ENDERCHEST_SOUND(Sound.BLOCK_ENDER_CHEST_OPEN),
-    TRASH_SOUND(Sound.BLOCK_BARREL_OPEN);
+    TRASH_SOUND(Sound.BLOCK_BARREL_OPEN),
+    TRASH_ALERT(Sound.BLOCK_NOTE_BLOCK_PLING);
     Sound sound;
 
     SPUSound(Sound sound) {
@@ -37,6 +38,7 @@ public enum SPUSound {
         LOOM_SOUND.setSound(checkSound(config.getString("loom-open-sound")));
         ENDERCHEST_SOUND.setSound(checkSound(config.getString("enderchest-open-sound")));
         TRASH_SOUND.setSound(checkSound(config.getString("trash-open-sound")));
+        TRASH_ALERT.setSound(checkSound(config.getString("trash-alert")));
     }
 
     private static Sound checkSound(String string){

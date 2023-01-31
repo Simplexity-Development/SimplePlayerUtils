@@ -3,9 +3,10 @@ package adhdmc.simpleplayerutils.commands;
 import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
+import adhdmc.simpleplayerutils.util.Util;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 
 public class RenameCommand implements CommandExecutor, TabCompleter {
     MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         //Console cannot run this
@@ -31,8 +33,8 @@ public class RenameCommand implements CommandExecutor, TabCompleter {
         }
         //Check perms
         if (!(player.hasPermission(SPUPerm.RENAME_BASIC.getPerm()) || player.hasPermission(SPUPerm.RENAME_MINIMESSAGE.getPerm()))) {
-            sender.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+            sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
+                    null, null, null, null, null, null, null));
             return false;
         }
         String renameString = String.join(" ", Arrays.stream(args).skip(0).collect(Collectors.joining(" ")));
@@ -40,42 +42,31 @@ public class RenameCommand implements CommandExecutor, TabCompleter {
         int maxChars = SimplePlayerUtils.getInstance().getConfig().getInt("rename-max-characters");
         if ((strippedInput.length() > maxChars) &&
                 !player.hasPermission(SPUPerm.RENAME_MAX_CHAR_BYPASS.getPerm())) {
-            player.sendMessage(miniMessage.deserialize(SPUMessage.RENAME_ERROR_INPUT_TOO_LONG.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
-                    Placeholder.parsed("int", String.valueOf(maxChars))));
+            player.sendMessage(Util.messageParsing(SPUMessage.RENAME_ERROR_INPUT_TOO_LONG.getMessage(),
+                    null, null, (double) maxChars, null, null, null, null));
             return false;
         }
         ItemStack heldItem = player.getInventory().getItemInMainHand();
         ItemMeta heldItemMeta = heldItem.getItemMeta();
-        Component currentItemName;
-        if (heldItemMeta.hasDisplayName()) {
-            currentItemName = heldItemMeta.displayName();
-        } else {
-            currentItemName = miniMessage.deserialize(heldItem.getType().toString());
-        }
         Component newItemName;
         if (player.hasPermission(SPUPerm.RENAME_MINIMESSAGE.getPerm())) {
-            newItemName = miniMessage.deserialize(renameString);
+            newItemName = miniMessage.deserialize(renameString).decoration(TextDecoration.ITALIC, false);
             heldItemMeta.displayName(newItemName);
             heldItem.setItemMeta(heldItemMeta);
-            player.sendMessage(miniMessage.deserialize(SPUMessage.RENAME_COMMAND_FEEDBACK.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
-                    Placeholder.component("oldname", currentItemName),
-                    Placeholder.component("newname", newItemName)));
+            player.sendMessage(Util.messageParsing(SPUMessage.RENAME_COMMAND_FEEDBACK.getMessage(),
+                    null, null, null, null, null, null, renameString));
             return true;
         }
         if (player.hasPermission(SPUPerm.RENAME_BASIC.getPerm())) {
             newItemName = miniMessage.deserialize(strippedInput);
             heldItemMeta.displayName(newItemName);
             heldItem.setItemMeta(heldItemMeta);
-            player.sendMessage(miniMessage.deserialize(SPUMessage.RENAME_COMMAND_FEEDBACK.getMessage(),
-                    Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
-                    Placeholder.component("oldname", currentItemName),
-                    Placeholder.component("newname", newItemName)));
+            player.sendMessage(Util.messageParsing(SPUMessage.RENAME_COMMAND_FEEDBACK.getMessage(),
+                    null, null, null, null, null, null, strippedInput));
             return true;
         }
-        player.sendMessage(miniMessage.deserialize(SPUMessage.ERROR_GENERAL.getMessage(),
-                Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage())));
+        player.sendMessage(Util.messageParsing(SPUMessage.ERROR_GENERAL.getMessage(),
+                null, null, null, null, null, null, null));
         return false;
     }
 
