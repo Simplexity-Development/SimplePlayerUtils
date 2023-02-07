@@ -56,6 +56,9 @@ public final class SimplePlayerUtils extends JavaPlugin {
     public static MiniMessage getMiniMessage() {
         return miniMessage;
     }
+    public static Logger getSPULogger(){
+        return getInstance().getLogger();
+    }
 
     public boolean isPapiEnabled() {
         return papiEnabled;

@@ -25,18 +25,15 @@ public class AFKCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        //If console runs this without supplying a player, error and return
         if (args.length == 0 && !(sender instanceof Player)) {
             sender.sendRichMessage(SPUMessage.ERROR_ONLY_PLAYER.getMessage());
             return false;
         }
-        //If the sender does not have permission to either set their own afk, or others, error and return
         if (!(sender.hasPermission(SPUPerm.AFK.getPerm()) || sender.hasPermission(SPUPerm.AFK_OTHERS.getPerm()))) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
                     null, null, null, null, null,null,null));
             return false;
         }
-        //If the sender doesn't have perms to set their own afk, and supplies no other player, error and return
         if (args.length == 0 && !sender.hasPermission(SPUPerm.AFK.getPerm())) {
             sender.sendMessage(Util.messageParsing(SPUMessage.ERROR_NO_PERMISSION.getMessage(),
                     null, null, null, null, null,null,null));
