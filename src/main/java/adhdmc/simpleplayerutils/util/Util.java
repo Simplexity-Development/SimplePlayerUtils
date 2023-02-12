@@ -96,4 +96,10 @@ public class Util {
                 Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
                 Placeholder.parsed("input", input));
     }
+
+    public static Component parseItem(String message, String item) {
+        return miniMessage.deserialize(message,
+                Placeholder.parsed("plugin_prefix", SPUMessage.PLUGIN_PREFIX.getMessage()),
+                Placeholder.parsed("item", item));
+    }
 }

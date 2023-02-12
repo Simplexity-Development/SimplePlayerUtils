@@ -31,16 +31,16 @@ public class FlyspeedCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length > 1) {
-            Player player = CommandOnOther.runCommandOnOtherPlayer(SPUPerm.LOOM_OTHER.getPerm(), sender, args);
+            Player player = CommandOnOther.runCommandOnOtherPlayer(SPUPerm.FLYSPEED_OTHERS.getPerm(), sender, args);
             if (player == null) {
                 return false;
             }
             if (args[1].equalsIgnoreCase("reset")) {
-                resetFlySpeed(sender, player);
+                resetPlayerFlySpeed(sender, player);
                 return true;
             }
             if (args[1].equalsIgnoreCase("get")) {
-                getFlySpeed(sender, player, player.getFlySpeed());
+                getPlayerFlySpeed(sender, player, player.getFlySpeed());
             }
             if (args[1].equalsIgnoreCase("set")) {
                 float speed;
@@ -52,10 +52,10 @@ public class FlyspeedCommand implements CommandExecutor, TabCompleter {
                     return false;
                 }
                 speed = speed/10;
-                setFlySpeed(sender, player, speed);
+                setPlayerFlySpeed(sender, player, speed);
                 return true;
             }
-            getFlySpeed(sender, player, player.getFlySpeed());
+            getPlayerFlySpeed(sender, player, player.getFlySpeed());
             return true;
         }
         Player playerSender = ((Player) sender).getPlayer();
@@ -64,17 +64,17 @@ public class FlyspeedCommand implements CommandExecutor, TabCompleter {
             return false;
         }
         if (args.length == 0) {
-            getFlySpeed(null, playerSender, playerSender.getFlySpeed());
+            getPlayerFlySpeed(null, playerSender, playerSender.getFlySpeed());
             return true;
         }
 
         if (args[0].equalsIgnoreCase("reset")) {
-            resetFlySpeed(null, playerSender);
+            resetPlayerFlySpeed(null, playerSender);
             return true;
         }
 
         if (args[0].equalsIgnoreCase("get")) {
-            getFlySpeed(null, playerSender, playerSender.getFlySpeed());
+            getPlayerFlySpeed(null, playerSender, playerSender.getFlySpeed());
             return true;
         }
         float speed;
@@ -86,11 +86,11 @@ public class FlyspeedCommand implements CommandExecutor, TabCompleter {
             return false;
         }
         speed = speed/10;
-        setFlySpeed(null, playerSender, speed);
+        setPlayerFlySpeed(null, playerSender, speed);
         return true;
     }
 
-    private void setFlySpeed(CommandSender initiator, Player targetPlayer, float speed) {
+    private void setPlayerFlySpeed(CommandSender initiator, Player targetPlayer, float speed) {
         Component initiatorName;
         if (initiator instanceof Player) {
             initiatorName = ((Player) initiator).displayName();
@@ -128,7 +128,7 @@ public class FlyspeedCommand implements CommandExecutor, TabCompleter {
                 String.valueOf(minForMessage), String.valueOf(maxForMessage)));
     }
 
-    private void getFlySpeed(CommandSender initiator, Player targetPlayer, float speed) {
+    private void getPlayerFlySpeed(CommandSender initiator, Player targetPlayer, float speed) {
         String humanReadableSpeed = String.valueOf(speed * 10);
         if (initiator != null) {
             initiator.sendMessage(Util.parseValueAndTarget(SPUMessage.OTHER_CURRENT_FLYSPEED.getMessage(),
@@ -139,7 +139,7 @@ public class FlyspeedCommand implements CommandExecutor, TabCompleter {
                 humanReadableSpeed));
     }
 
-    private void resetFlySpeed(CommandSender initiator, Player targetPlayer) {
+    private void resetPlayerFlySpeed(CommandSender initiator, Player targetPlayer) {
         Component initiatorName;
         if (initiator instanceof Player) {
             initiatorName = ((Player) initiator).displayName();
@@ -150,17 +150,13 @@ public class FlyspeedCommand implements CommandExecutor, TabCompleter {
             targetPlayer.setFlySpeed(0.1f);
             initiator.sendMessage(Util.parseTargetOnly(SPUMessage.FLYSPEED_RESET_OTHER.getMessage(),
                     targetPlayer.displayName()));
-            targetPlayer.sendMessage(Util.parseInitiatorOnly(SPUMessage.FLYSPEED_SET_BY_OTHER.getMessage(),
+            targetPlayer.sendMessage(Util.parseInitiatorOnly(SPUMessage.FLYSPEED_RESET_BY_OTHER.getMessage(),
                     initiatorName));
             return;
         }
         targetPlayer.setFlySpeed(0.1f);
         targetPlayer.sendMessage(Util.parsePrefixOnly(SPUMessage.FLYSPEED_RESET.getMessage()));
     }
-
-
-
-
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
