@@ -43,7 +43,6 @@ public class AnvilCommand implements TabExecutor {
         if (sender != null) {
             sender.sendMessage(Util.parseTargetOnly(SPUMessage.ANVIL_COMMAND_OTHER.getMessage(), player.displayName()));
         }
-
     }
 
     @Override

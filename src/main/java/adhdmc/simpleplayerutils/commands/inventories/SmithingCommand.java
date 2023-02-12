@@ -1,12 +1,10 @@
 package adhdmc.simpleplayerutils.commands.inventories;
 
-import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import adhdmc.simpleplayerutils.commands.util.CommandOnOther;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.SPUSound;
 import adhdmc.simpleplayerutils.util.Util;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,7 +17,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class SmithingCommand implements CommandExecutor, TabCompleter {
-    MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {

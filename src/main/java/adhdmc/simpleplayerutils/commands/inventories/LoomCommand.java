@@ -28,7 +28,7 @@ public class LoomCommand implements CommandExecutor, TabCompleter {
             openLoom(player, sender);
             return true;
         }
-        if (!(sender instanceof Player player   )) {
+        if (!(sender instanceof Player player)) {
             sender.sendRichMessage(SPUMessage.ERROR_ONLY_PLAYER.getMessage());
             return false;
         }
