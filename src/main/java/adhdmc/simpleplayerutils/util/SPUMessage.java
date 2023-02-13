@@ -2,33 +2,11 @@ package adhdmc.simpleplayerutils.util;
 
 public enum SPUMessage {
     PLUGIN_PREFIX("<white>[<gradient:aqua:dark_aqua>SimplePlayerUtils<reset><white>]<reset>"),
-    ENABLED("Enabled"),
-    DISABLED("Disabled"),
     CONSOLE_FORMAT("<red>[<dark_red>Console</dark_red>]</red> "),
-    //coords
-    COORD_X("x,"),
-    COORD_Y("y, "),
-    COORD_Z("z"),
-    //time
-    YEAR("year"),
-    YEARS("years"),
-    MONTH("month"),
-    MONTHS("months"),
-    WEEK("week"),
-    WEEKS("weeks"),
-    DAY("day"),
-    DAYS("days"),
-    HOUR("hour"),
-    HOURS("hours"),
-    MINUTE("minute"),
-    MINUTES("minutes"),
-    SECOND("second"),
-    SECONDS("seconds"),
     CONFIG_RELOADED("<plugin_prefix> <gold>Simple Player Utils Config has been reloaded"),
     //Errors
     ERROR_GENERAL("<plugin_prefix> <red>Sorry, that didn't seem to work. Please check that your sytax is correct, and that you have the proper permissions, and try again."),
     ERROR_TOO_MANY_ARGUMENTS("<plugin_prefix> <red>Sorry, you provided too many arguments. Please check your syntax and try again"),
-    ERROR_NO_PERMISSION("<plugin_prefix> <red>Sorry but you do not have permission to use this command"),
     ERROR_ONLY_PLAYER("<red>Only a player may execute this command."),
     ERROR_NO_VALID_PLAYER_SUPPLIED("<plugin_prefix> <red>No valid player was supplied. <input> is not the name of a valid online player, please check your spelling and try again"),
     //Commands
@@ -48,7 +26,7 @@ public enum SPUMessage {
     TRASH_COMMAND_FEEDBACK("<plugin_prefix> <gray>Your trashed items have been deleted"),
     TRASH_BLACKLIST_ITEMS_DROPPED("<plugin_prefix> <gold>Hey! You had some items in the trash that are not allowed to be trashed, they've been dropped back on the ground"),
     RENAME_COMMAND_FEEDBACK("<plugin_prefix> <green>You have renamed your item to <input>"),
-    RENAME_ERROR_INPUT_TOO_LONG("<plugin_prefix> <red>Sorry, the limit for the /rename command is <int> characters, excluding formatting and color tags."),
+    RENAME_ERROR_INPUT_TOO_LONG("<plugin_prefix> <red>Sorry, the limit for the /rename command is <value> characters, excluding formatting and color tags."),
     FLY_ENABLED_SELF("<plugin_prefix> <green>Your flight has been enabled"),
     FLY_DISABLED_SELF("<plugin_prefix> <gray>Your flight has been disabled"),
     FLY_ENABLED_OTHER("<plugin_prefix> <green>You have enabled flight for <target>"),

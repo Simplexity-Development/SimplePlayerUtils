@@ -13,6 +13,7 @@ import adhdmc.simpleplayerutils.util.SPUSound;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public final class SimplePlayerUtils extends JavaPlugin {
@@ -72,10 +73,17 @@ public final class SimplePlayerUtils extends JavaPlugin {
         LocaleBuilder.getInstance();
     }
 
+    public void reloadConfigs() {
+        getInstance().reloadConfig();
+        Defaults.fillBlacklists();
+        SPUSound.setConfiguredSounds();
+        LocaleBuilder.getInstance().reloadLocale();
+    }
+
     private void registerPurpurClasses(){
         this.getServer().getPluginManager().registerEvents(new AFKListener(), this);
         this.getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        this.getCommand("afk").setExecutor(new AFKCommand());
+        Objects.requireNonNull(this.getCommand("afk")).setExecutor(new AFKCommand());
     }
 
     private void registerListeners() {
@@ -84,20 +92,20 @@ public final class SimplePlayerUtils extends JavaPlugin {
     }
 
     private void registerCommands() {
-        this.getCommand("fly").setExecutor(new FlyCommand());
-        this.getCommand("craft").setExecutor(new CraftCommand());
-        this.getCommand("anvil").setExecutor(new AnvilCommand());
-        this.getCommand("cartography").setExecutor(new CartographyCommand());
-        this.getCommand("grindstone").setExecutor(new GrindstoneCommand());
-        this.getCommand("loom").setExecutor(new LoomCommand());
-        this.getCommand("smithing").setExecutor(new SmithingCommand());
-        this.getCommand("stonecutter").setExecutor(new StonecutterCommand());
-        this.getCommand("enderchest").setExecutor(new EnderchestCommand());
-        this.getCommand("flyspeed").setExecutor(new FlyspeedCommand());
-        this.getCommand("walkspeed").setExecutor(new WalkspeedCommand());
-        this.getCommand("rename").setExecutor(new RenameCommand());
-        this.getCommand("hat").setExecutor(new HatCommand());
-        this.getCommand("trash").setExecutor(new TrashCommand());
-        this.getCommand("spureload").setExecutor(new SPUReload());
+        Objects.requireNonNull(this.getCommand("fly")).setExecutor(new FlyCommand());
+        Objects.requireNonNull(this.getCommand("craft")).setExecutor(new CraftCommand());
+        Objects.requireNonNull(this.getCommand("anvil")).setExecutor(new AnvilCommand());
+        Objects.requireNonNull(this.getCommand("cartography")).setExecutor(new CartographyCommand());
+        Objects.requireNonNull(this.getCommand("grindstone")).setExecutor(new GrindstoneCommand());
+        Objects.requireNonNull(this.getCommand("loom")).setExecutor(new LoomCommand());
+        Objects.requireNonNull(this.getCommand("smithing")).setExecutor(new SmithingCommand());
+        Objects.requireNonNull(this.getCommand("stonecutter")).setExecutor(new StonecutterCommand());
+        Objects.requireNonNull(this.getCommand("enderchest")).setExecutor(new EnderchestCommand());
+        Objects.requireNonNull(this.getCommand("flyspeed")).setExecutor(new FlyspeedCommand());
+        Objects.requireNonNull(this.getCommand("walkspeed")).setExecutor(new WalkspeedCommand());
+        Objects.requireNonNull(this.getCommand("rename")).setExecutor(new RenameCommand());
+        Objects.requireNonNull(this.getCommand("hat")).setExecutor(new HatCommand());
+        Objects.requireNonNull(this.getCommand("trash")).setExecutor(new TrashCommand());
+        Objects.requireNonNull(this.getCommand("spureload")).setExecutor(new SPUReload());
     }
 }
