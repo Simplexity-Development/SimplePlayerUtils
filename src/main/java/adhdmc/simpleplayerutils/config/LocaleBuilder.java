@@ -8,7 +8,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Locale;
 import java.util.Set;
 
 public class LocaleBuilder {
@@ -36,8 +35,6 @@ public class LocaleBuilder {
             catch (IOException | InvalidConfigurationException e) { e.printStackTrace(); }
             Set<String> keys = localeConfig.getKeys(false);
             for (String key : keys) {
-                key = key.toUpperCase(Locale.ENGLISH);
-                key = key.replace("-", "_");
                 try {
                     SPUMessage message = SPUMessage.valueOf(key);
                     message.setMessage(localeConfig.getString(key, message.getMessage()));
