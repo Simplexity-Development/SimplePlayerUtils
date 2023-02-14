@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class AFKCommand implements TabExecutor {
-    NamespacedKey spamPrevention = SPUKey.AFK_SPAM_PREVENTION.getKey();
+    final NamespacedKey spamPrevention = SPUKey.AFK_SPAM_PREVENTION.getKey();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {

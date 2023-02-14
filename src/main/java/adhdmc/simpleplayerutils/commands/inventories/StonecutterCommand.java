@@ -1,25 +1,21 @@
 package adhdmc.simpleplayerutils.commands.inventories;
 
-import adhdmc.simpleplayerutils.SimplePlayerUtils;
 import adhdmc.simpleplayerutils.commands.util.CommandOnOther;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.SPUSound;
 import adhdmc.simpleplayerutils.util.Util;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class StonecutterCommand implements CommandExecutor, TabCompleter {
-    MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
+public class StonecutterCommand implements TabExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {

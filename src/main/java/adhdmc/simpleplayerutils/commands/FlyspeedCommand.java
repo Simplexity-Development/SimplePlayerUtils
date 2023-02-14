@@ -7,10 +7,7 @@ import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -18,8 +15,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class FlyspeedCommand implements CommandExecutor, TabCompleter {
-    MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
+public class FlyspeedCommand implements TabExecutor {
+    final MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();

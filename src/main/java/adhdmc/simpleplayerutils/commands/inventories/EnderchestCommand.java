@@ -6,10 +6,7 @@ import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.SPUSound;
 import adhdmc.simpleplayerutils.util.Util;
 import org.bukkit.Location;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
@@ -17,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EnderchestCommand implements CommandExecutor, TabCompleter {
+public class EnderchestCommand implements TabExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {

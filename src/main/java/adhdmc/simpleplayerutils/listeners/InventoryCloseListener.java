@@ -22,9 +22,9 @@ import java.util.UUID;
 
 public class InventoryCloseListener implements Listener {
 
-    HashMap<UUID, Inventory> inventoryHashMap = TrashCommand.getInvMap();
+    final HashMap<UUID, Inventory> inventoryHashMap = TrashCommand.getInvMap();
 
-    HashSet<Material> blacklistedTrash = Defaults.getTrashBlacklist();
+    final HashSet<Material> blacklistedTrash = Defaults.getTrashBlacklist();
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 

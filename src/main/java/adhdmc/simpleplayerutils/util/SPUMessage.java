@@ -5,7 +5,7 @@ public enum SPUMessage {
     CONSOLE_FORMAT("<red>[<dark_red>Console</dark_red>]</red> "),
     CONFIG_RELOADED("<plugin_prefix> <gold>Simple Player Utils Config has been reloaded"),
     //Errors
-    ERROR_GENERAL("<plugin_prefix> <red>Sorry, that didn't seem to work. Please check that your sytax is correct, and that you have the proper permissions, and try again."),
+    ERROR_GENERAL("<plugin_prefix> <red>Sorry, that didn't seem to work. Please check that your syntax is correct, and that you have the proper permissions, and try again."),
     ERROR_TOO_MANY_ARGUMENTS("<plugin_prefix> <red>Sorry, you provided too many arguments. Please check your syntax and try again"),
     ERROR_ONLY_PLAYER("<red>Only a player may execute this command."),
     ERROR_NO_VALID_PLAYER_SUPPLIED("<plugin_prefix> <red>No valid player was supplied. <input> is not the name of a valid online player, please check your spelling and try again"),

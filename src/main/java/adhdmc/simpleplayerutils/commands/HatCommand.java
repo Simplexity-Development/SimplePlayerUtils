@@ -5,10 +5,7 @@ import adhdmc.simpleplayerutils.config.Defaults;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.Util;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -19,8 +16,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashSet;
 import java.util.List;
 
-public class HatCommand implements CommandExecutor, TabCompleter {
-    HashSet<Material> blockedHats = Defaults.getHatBlacklist();
+public class HatCommand implements TabExecutor {
+    final HashSet<Material> blockedHats = Defaults.getHatBlacklist();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {

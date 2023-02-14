@@ -9,10 +9,7 @@ import adhdmc.simpleplayerutils.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.NamespacedKey;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
@@ -21,9 +18,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class FlyCommand implements CommandExecutor, TabCompleter {
-    NamespacedKey flyStatus = SPUKey.FLY_STATUS.getKey();
-    MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
+public class FlyCommand implements TabExecutor {
+    final NamespacedKey flyStatus = SPUKey.FLY_STATUS.getKey();
+    final MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length > 0) {
