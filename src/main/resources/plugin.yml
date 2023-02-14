@@ -64,6 +64,9 @@ commands:
     description: renames an item
     permission: spu.command.rename
 permissions:
+  spu.reload:
+    description: Reloads the Simple Player Utils config and locale
+    default: op
   spu.command.hat:
     description: Lets you put something on your head
     default: op

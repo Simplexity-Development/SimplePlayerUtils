@@ -20,10 +20,10 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class FlyListeners implements Listener {
 
-    NamespacedKey flyStatus = SPUKey.FLY_STATUS.getKey();
-    MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
-    byte off = (byte)0;
-    byte on = (byte)1;
+    final NamespacedKey flyStatus = SPUKey.FLY_STATUS.getKey();
+    final MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
+    final byte off = (byte)0;
+    final byte on = (byte)1;
     @EventHandler
     public void onPlayerLogin(PlayerJoinEvent joinEvent){
         Player player = joinEvent.getPlayer();

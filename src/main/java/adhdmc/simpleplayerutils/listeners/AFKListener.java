@@ -12,7 +12,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.purpurmc.purpur.event.PlayerAFKEvent;
 
 public class AFKListener implements Listener {
-    NamespacedKey spamPrevention = SPUKey.AFK_SPAM_PREVENTION.getKey();
+    final NamespacedKey spamPrevention = SPUKey.AFK_SPAM_PREVENTION.getKey();
 
     @EventHandler
     public void onAFKChange(PlayerAFKEvent AFKEvent){

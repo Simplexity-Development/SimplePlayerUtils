@@ -22,9 +22,9 @@ import java.util.UUID;
 
 public class InventoryCloseListener implements Listener {
 
-    HashMap<UUID, Inventory> inventoryHashMap = TrashCommand.getInvMap();
+    final HashMap<UUID, Inventory> inventoryHashMap = TrashCommand.getInvMap();
 
-    HashSet<Material> blacklistedTrash = Defaults.getTrashBlacklist();
+    final HashSet<Material> blacklistedTrash = Defaults.getTrashBlacklist();
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 
@@ -57,12 +57,10 @@ public class InventoryCloseListener implements Listener {
             for (ItemStack item : blockedItemsToDrop) {
                 playerLocation.getWorld().dropItem(playerLocation, item);
             }
-            player.sendMessage(Util.messageParsing(SPUMessage.TRASH_BLACKLIST_ITEMS_DROPPED.getMessage(),
-                    null, null, null, null, null, null, null));
-            player.playSound(playerLocation, SPUSound.TRASH_ALERT.getSound(), 1, 1);
+            player.sendMessage(Util.parsePrefixOnly(SPUMessage.TRASH_BLACKLIST_ITEMS_DROPPED.getMessage()));
+            player.playSound(playerLocation, SPUSound.TRASH_ALERT.getSound(), 0.5f, 1);
         } else {
-            closeEvent.getPlayer().sendMessage(Util.messageParsing(SPUMessage.TRASH_COMMAND_FEEDBACK.getMessage(),
-                    null, null, null, null, null, null, null));
+            closeEvent.getPlayer().sendMessage(Util.parsePrefixOnly(SPUMessage.TRASH_COMMAND_FEEDBACK.getMessage()));
         }
 
     }
