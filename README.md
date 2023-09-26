@@ -9,6 +9,7 @@ A plugin for Minecraft servers that provides various player utilities, including
  - `/afk` command for toggling AFK status (Purpur-specific feature)
  - `/fly` command for enabling creative flight
  - `/flyspeed` and `/walkspeed` commands for adjusting fly and walk speed respectively
+   - `/flyspeed reset` or `/walkspeed reset` can be used to reset the fly or walk speed respectively
  - commands for opening various workstations, including `/anvil`, `/cartography`, `/craft`, `/grindstone`, `/loom`, `/smithing`, `/stonecutter`, and `/enderchest`
  - `/rename` command for renaming items
  - `/trash` for deleting unwanted items (comes with a configurable blacklist)
