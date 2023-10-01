@@ -8,11 +8,11 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Defaults {
-
+    
     private static final HashSet<Material> hatBlacklist = new HashSet<>();
     private static final HashSet<Material> trashBlacklist = new HashSet<>();
-
-    public static void setConfigDefaults(){
+    
+    public static void setConfigDefaults() {
         FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();
         config.addDefault("min-flyspeed", -10);
         config.addDefault("min-walkspeed", -10);
@@ -20,7 +20,7 @@ public class Defaults {
         config.addDefault("max-walkspeed", 10);
         config.addDefault("chatting-disables-afk", true);
         config.addDefault("hat-respects-binding-enchant", true);
-        config.addDefault("hat-blocked-materials", List.of("AIR","SPAWNER", "COMMAND_BLOCK", "STRUCTURE_VOID"));
+        config.addDefault("hat-blocked-materials", List.of("AIR", "SPAWNER", "COMMAND_BLOCK", "STRUCTURE_VOID"));
         config.addDefault("list-is-whitelist", false);
         config.addDefault("rename-max-characters", 50);
         config.addDefault("trash-blacklist", List.of("DIAMOND", "DIAMOND_BLOCK", "DIAMOND_ORE",
@@ -43,7 +43,7 @@ public class Defaults {
         config.addDefault("trash-open-sound", "BLOCK_BARREL_OPEN");
         config.addDefault("trash-alert", "BLOCK_NOTE_BLOCK_PLING");
     }
-
+    
     public static void fillBlacklists() {
         hatBlacklist.clear();
         trashBlacklist.clear();
@@ -69,11 +69,11 @@ public class Defaults {
             trashBlacklist.add(blacklistedMaterial);
         }
     }
-
+    
     public static HashSet<Material> getHatBlacklist() {
         return hatBlacklist;
     }
-
+    
     public static HashSet<Material> getTrashBlacklist() {
         return trashBlacklist;
     }

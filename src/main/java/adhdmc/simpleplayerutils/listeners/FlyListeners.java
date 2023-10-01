@@ -19,16 +19,17 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 public class FlyListeners implements Listener {
-
+    
     final NamespacedKey flyStatus = SPUKey.FLY_STATUS.getKey();
     final MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
-    final byte off = (byte)0;
-    final byte on = (byte)1;
+    final byte off = (byte) 0;
+    final byte on = (byte) 1;
+    
     @EventHandler
-    public void onPlayerLogin(PlayerJoinEvent joinEvent){
+    public void onPlayerLogin(PlayerJoinEvent joinEvent) {
         Player player = joinEvent.getPlayer();
         PersistentDataContainer playerPDC = player.getPersistentDataContainer();
-        Bukkit.getScheduler().runTaskLater(SimplePlayerUtils.getInstance(), ()-> {
+        Bukkit.getScheduler().runTaskLater(SimplePlayerUtils.getInstance(), () -> {
             byte playerFlyState = playerPDC.getOrDefault(flyStatus, PersistentDataType.BYTE, off);
             if (playerFlyState == on
                     && player.hasPermission(SPUPerm.FLY.getPerm())) {
@@ -45,7 +46,7 @@ public class FlyListeners implements Listener {
             }
         }, 4);
     }
-
+    
     @EventHandler
     public void onWorldChange(PlayerChangedWorldEvent worldEvent) {
         Player player = worldEvent.getPlayer();
@@ -58,7 +59,7 @@ public class FlyListeners implements Listener {
             }
         }
     }
-
+    
     @EventHandler
     public void onRespawn(PlayerRespawnEvent respawnEvent) {
         Player player = respawnEvent.getPlayer();
@@ -68,12 +69,12 @@ public class FlyListeners implements Listener {
             player.setAllowFlight(true);
         }
     }
-
+    
     @EventHandler
     public void onGamemodeChange(PlayerGameModeChangeEvent gameModeChangeEvent) {
         Player player = gameModeChangeEvent.getPlayer();
         PersistentDataContainer playerPDC = player.getPersistentDataContainer();
-        Bukkit.getScheduler().runTaskLater(SimplePlayerUtils.getInstance(), ()-> {
+        Bukkit.getScheduler().runTaskLater(SimplePlayerUtils.getInstance(), () -> {
             Byte playerFlyState = playerPDC.getOrDefault(flyStatus, PersistentDataType.BYTE, off);
             if (playerFlyState == on) {
                 player.setAllowFlight(true);

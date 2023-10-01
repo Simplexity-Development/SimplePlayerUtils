@@ -16,18 +16,12 @@ public enum SPUSound {
     TRASH_SOUND(Sound.BLOCK_BARREL_OPEN),
     TRASH_ALERT(Sound.BLOCK_NOTE_BLOCK_PLING);
     Sound sound;
-
+    
     SPUSound(Sound sound) {
         this.sound = sound;
     }
-    private void setSound(Sound sound) {
-        this.sound = sound;
-    }
-    public Sound getSound(){
-        return sound;
-    }
-
-    public static void setConfiguredSounds(){
+    
+    public static void setConfiguredSounds() {
         FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();
         CRAFTING_SOUND.setSound(checkSound(config.getString("craft-open-sound")));
         ANVIL_SOUND.setSound(checkSound(config.getString("anvil-open-sound")));
@@ -40,8 +34,8 @@ public enum SPUSound {
         TRASH_SOUND.setSound(checkSound(config.getString("trash-open-sound")));
         TRASH_ALERT.setSound(checkSound(config.getString("trash-alert")));
     }
-
-    private static Sound checkSound(String string){
+    
+    private static Sound checkSound(String string) {
         if (string == null) {
             return null;
         }
@@ -56,5 +50,13 @@ public enum SPUSound {
             return null;
         }
         return soundToCheck;
+    }
+    
+    public Sound getSound() {
+        return sound;
+    }
+    
+    private void setSound(Sound sound) {
+        this.sound = sound;
     }
 }

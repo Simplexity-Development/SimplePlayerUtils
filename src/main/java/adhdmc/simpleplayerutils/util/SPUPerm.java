@@ -31,6 +31,12 @@ public enum SPUPerm {
     GRINDSTONE_OTHER(new Permission("spu.command.other.grindstone")),
     TRASH(new Permission("spu.command.trash")),
     TRASH_OTHER(new Permission("spu.command.other.trash")),
+    REPAIR_HELD(new Permission("spu.command.repair.held")),
+    REPAIR_HELD_OTHER(new Permission("spu.command.other.repair.held")),
+    REPAIR_HOTBAR(new Permission("spu.command.repair.hotbar")),
+    REPAIR_HOTBAR_OTHER(new Permission("spu.command.other.repair.hotbar")),
+    REPAIR_ALL(new Permission("spu.command.repair.all")),
+    REPAIR_ALL_OTHER(new Permission("spu.command.other.repair.all")),
     RENAME_BASIC(new Permission("spu.command.rename.basic")),
     RENAME_MINIMESSAGE(new Permission("spu.command.rename.minimessage")),
     RENAME_MAX_CHAR_BYPASS(new Permission("spu.command.rename.character.max.bypass")),
@@ -38,13 +44,14 @@ public enum SPUPerm {
     LORE_BASIC(new Permission("spu.command.lore.basic")),
     LORE_MINIMESSAGE(new Permission("spu.command.lore.minimessage")),
     RELOAD(new Permission("spu.reload"));
-
+    
     final Permission perm;
-
+    
     SPUPerm(Permission perm) {
         this.perm = perm;
     }
-    public Permission getPerm(){
+    
+    public Permission getPerm() {
         return perm;
     }
 }

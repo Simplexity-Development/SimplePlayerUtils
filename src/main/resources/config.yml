@@ -8,6 +8,10 @@ max-flyspeed: 10
 max-walkspeed: 10
 #Should chatting take someone out of AFK? (Purpur-specific feature)
 chatting-disables-afk: true
+#Should the /repair command take the xp required to repair the item?
+repair-takes-xp: false
+#Should the /repair hand command also repair the item in the off-hand?
+repair-off-hand: false
 #Should /hat avoid swapping off items with binding?
 hat-respects-binding-enchant: true
 #Materials that should not be allowed to be used in /hat

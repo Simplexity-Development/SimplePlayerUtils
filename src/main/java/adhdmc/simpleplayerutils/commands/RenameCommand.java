@@ -7,7 +7,9 @@ import adhdmc.simpleplayerutils.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.command.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -18,9 +20,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RenameCommand implements CommandExecutor, TabExecutor {
+public class RenameCommand implements TabExecutor {
+    
     final MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
-
+    
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         //Console cannot run this
@@ -37,7 +40,7 @@ public class RenameCommand implements CommandExecutor, TabExecutor {
         }
         ItemStack heldItem = player.getInventory().getItemInMainHand();
         Component newItemName;
-
+        
         if (player.hasPermission(SPUPerm.RENAME_MINIMESSAGE.getPerm())) {
             newItemName = miniMessage.deserialize(renameString).decoration(TextDecoration.ITALIC, false);
             setItemName(newItemName, heldItem);
@@ -53,13 +56,13 @@ public class RenameCommand implements CommandExecutor, TabExecutor {
         player.sendMessage(Util.parsePrefixOnly(SPUMessage.ERROR_GENERAL.getMessage()));
         return false;
     }
-
+    
     private void setItemName(Component itemNameToSet, ItemStack item) {
         ItemMeta editItemMeta = item.getItemMeta();
         editItemMeta.displayName(itemNameToSet);
         item.setItemMeta(editItemMeta);
     }
-
+    
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         return null;

@@ -1,13 +1,14 @@
 package adhdmc.simpleplayerutils.commands;
 
 import adhdmc.simpleplayerutils.SimplePlayerUtils;
-import adhdmc.simpleplayerutils.commands.util.CommandOnOther;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.command.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +17,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class FlyspeedCommand implements TabExecutor {
+    
     final MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
+    
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();
@@ -26,9 +29,9 @@ public class FlyspeedCommand implements TabExecutor {
             sender.sendRichMessage(SPUMessage.ERROR_ONLY_PLAYER.getMessage());
             return false;
         }
-
+        
         if (args.length > 1) {
-            Player player = CommandOnOther.runCommandOnOtherPlayer(SPUPerm.FLYSPEED_OTHERS.getPerm(), sender, args);
+            Player player = AbstractInventoryCommand.checkAdminPerms(SPUPerm.FLYSPEED_OTHERS.getPerm(), sender, args);
             if (player == null) {
                 return false;
             }
@@ -43,12 +46,12 @@ public class FlyspeedCommand implements TabExecutor {
                 float speed;
                 try {
                     speed = Float.parseFloat(args[2]);
-                } catch (NumberFormatException|NullPointerException e) {
+                } catch (NumberFormatException | NullPointerException e) {
                     sender.sendMessage(Util.parseMinMax(SPUMessage.SPEED_NUMBER_ERROR.getMessage(),
                             String.valueOf(minForMessage), String.valueOf(maxForMessage)));
                     return false;
                 }
-                speed = speed/10;
+                speed = speed / 10;
                 setPlayerFlySpeed(sender, player, speed);
                 return true;
             }
@@ -64,12 +67,12 @@ public class FlyspeedCommand implements TabExecutor {
             getPlayerFlySpeed(null, playerSender, playerSender.getFlySpeed());
             return true;
         }
-
+        
         if (args[0].equalsIgnoreCase("reset")) {
             resetPlayerFlySpeed(null, playerSender);
             return true;
         }
-
+        
         if (args[0].equalsIgnoreCase("get")) {
             getPlayerFlySpeed(null, playerSender, playerSender.getFlySpeed());
             return true;
@@ -77,16 +80,16 @@ public class FlyspeedCommand implements TabExecutor {
         float speed;
         try {
             speed = Float.parseFloat(args[0]);
-        } catch (NumberFormatException|NullPointerException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             playerSender.sendMessage(Util.parseMinMax(SPUMessage.SPEED_NUMBER_ERROR.getMessage(),
                     String.valueOf(minForMessage), String.valueOf(maxForMessage)));
             return false;
         }
-        speed = speed/10;
+        speed = speed / 10;
         setPlayerFlySpeed(null, playerSender, speed);
         return true;
     }
-
+    
     private void setPlayerFlySpeed(CommandSender initiator, Player targetPlayer, float speed) {
         Component initiatorName;
         if (initiator instanceof Player) {
@@ -124,7 +127,7 @@ public class FlyspeedCommand implements TabExecutor {
         targetPlayer.sendMessage(Util.parseMinMax(SPUMessage.SPEED_NUMBER_ERROR.getMessage(),
                 String.valueOf(minForMessage), String.valueOf(maxForMessage)));
     }
-
+    
     private void getPlayerFlySpeed(CommandSender initiator, Player targetPlayer, float speed) {
         String humanReadableSpeed = String.valueOf(speed * 10);
         if (initiator != null) {
@@ -135,7 +138,7 @@ public class FlyspeedCommand implements TabExecutor {
         targetPlayer.sendMessage(Util.parseSingleValueOnly(SPUMessage.OWN_CURRENT_FLYSPEED.getMessage(),
                 humanReadableSpeed));
     }
-
+    
     private void resetPlayerFlySpeed(CommandSender initiator, Player targetPlayer) {
         Component initiatorName;
         if (initiator instanceof Player) {
@@ -154,7 +157,7 @@ public class FlyspeedCommand implements TabExecutor {
         targetPlayer.setFlySpeed(0.1f);
         targetPlayer.sendMessage(Util.parsePrefixOnly(SPUMessage.FLYSPEED_RESET.getMessage()));
     }
-
+    
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         return null;

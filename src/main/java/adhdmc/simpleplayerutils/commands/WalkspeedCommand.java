@@ -1,13 +1,14 @@
 package adhdmc.simpleplayerutils.commands;
 
 import adhdmc.simpleplayerutils.SimplePlayerUtils;
-import adhdmc.simpleplayerutils.commands.util.CommandOnOther;
 import adhdmc.simpleplayerutils.util.SPUMessage;
 import adhdmc.simpleplayerutils.util.SPUPerm;
 import adhdmc.simpleplayerutils.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.command.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +17,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class WalkspeedCommand implements TabExecutor {
+    
     final MiniMessage miniMessage = SimplePlayerUtils.getMiniMessage();
+    
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         FileConfiguration config = SimplePlayerUtils.getInstance().getConfig();
         float maxForMessage = config.getInt("max-walkspeed");
@@ -25,9 +28,9 @@ public class WalkspeedCommand implements TabExecutor {
             sender.sendRichMessage(SPUMessage.ERROR_ONLY_PLAYER.getMessage());
             return false;
         }
-
+        
         if (args.length > 1) {
-            Player player = CommandOnOther.runCommandOnOtherPlayer(SPUPerm.WALKSPEED_OTHERS.getPerm(), sender, args);
+            Player player = AbstractInventoryCommand.checkAdminPerms(SPUPerm.WALKSPEED_OTHERS.getPerm(), sender, args);
             if (player == null) {
                 return false;
             }
@@ -42,12 +45,12 @@ public class WalkspeedCommand implements TabExecutor {
                 float speed;
                 try {
                     speed = Float.parseFloat(args[2]);
-                } catch (NumberFormatException|NullPointerException e) {
+                } catch (NumberFormatException | NullPointerException e) {
                     sender.sendMessage(Util.parseMinMax(SPUMessage.SPEED_NUMBER_ERROR.getMessage(),
                             String.valueOf(minForMessage), String.valueOf(maxForMessage)));
                     return false;
                 }
-                speed = speed/10;
+                speed = speed / 10;
                 setPlayerWalkSpeed(sender, player, speed);
                 return true;
             }
@@ -63,12 +66,12 @@ public class WalkspeedCommand implements TabExecutor {
             getPlayerWalkSpeed(null, playerSender, playerSender.getWalkSpeed());
             return true;
         }
-
+        
         if (args[0].equalsIgnoreCase("reset")) {
             resetPlayerWalkSpeed(null, playerSender);
             return true;
         }
-
+        
         if (args[0].equalsIgnoreCase("get")) {
             getPlayerWalkSpeed(null, playerSender, playerSender.getWalkSpeed());
             return true;
@@ -76,16 +79,16 @@ public class WalkspeedCommand implements TabExecutor {
         float speed;
         try {
             speed = Float.parseFloat(args[0]);
-        } catch (NumberFormatException|NullPointerException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             playerSender.sendMessage(Util.parseMinMax(SPUMessage.SPEED_NUMBER_ERROR.getMessage(),
                     String.valueOf(minForMessage), String.valueOf(maxForMessage)));
             return false;
         }
-        speed = speed/10;
+        speed = speed / 10;
         setPlayerWalkSpeed(null, playerSender, speed);
         return true;
     }
-
+    
     private void setPlayerWalkSpeed(CommandSender initiator, Player targetPlayer, float speed) {
         Component initiatorName;
         if (initiator instanceof Player) {
@@ -123,7 +126,7 @@ public class WalkspeedCommand implements TabExecutor {
         targetPlayer.sendMessage(Util.parseMinMax(SPUMessage.SPEED_NUMBER_ERROR.getMessage(),
                 String.valueOf(minForMessage), String.valueOf(maxForMessage)));
     }
-
+    
     private void getPlayerWalkSpeed(CommandSender initiator, Player targetPlayer, float speed) {
         String humanReadableSpeed = String.valueOf(speed * 10);
         if (initiator != null) {
@@ -134,7 +137,7 @@ public class WalkspeedCommand implements TabExecutor {
         targetPlayer.sendMessage(Util.parseSingleValueOnly(SPUMessage.OWN_CURRENT_WALKSPEED.getMessage(),
                 humanReadableSpeed));
     }
-
+    
     private void resetPlayerWalkSpeed(CommandSender initiator, Player targetPlayer) {
         Component initiatorName;
         if (initiator instanceof Player) {
@@ -153,8 +156,8 @@ public class WalkspeedCommand implements TabExecutor {
         targetPlayer.setWalkSpeed(0.2f);
         targetPlayer.sendMessage(Util.parsePrefixOnly(SPUMessage.WALKSPEED_RESET.getMessage()));
     }
-
-
+    
+    
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         return null;

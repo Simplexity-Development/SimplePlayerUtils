@@ -9,6 +9,7 @@ public enum SPUMessage {
     ERROR_TOO_MANY_ARGUMENTS("<plugin_prefix> <red>Sorry, you provided too many arguments. Please check your syntax and try again"),
     ERROR_ONLY_PLAYER("<red>Only a player may execute this command."),
     ERROR_NO_VALID_PLAYER_SUPPLIED("<plugin_prefix> <red>No valid player was supplied. <input> is not the name of a valid online player, please check your spelling and try again"),
+    ERROR_NO_PERMISSION("<red>You do not have permission to run this command"),
     //Commands
     HAT_OUTPUT("<plugin_prefix> <green>Successfully put on a hat!"),
     HAT_ERROR_BLOCKED_ITEM("<plugin_prefix> <red>You cannot put <item> on your head"),
@@ -50,19 +51,17 @@ public enum SPUMessage {
     FLYSPEED_SET_BY_OTHER("<plugin_prefix> <green>Your flyspeed has been set to <value> by <initiator>"),
     FLYSPEED_RESET_BY_OTHER("<plugin_prefix> <green>Your flyspeed has been reset by <initiator>"),
     SPEED_NUMBER_ERROR("<plugin_prefix> <red>Please use a number between <min> and <max>"),
-    LOGGER_INVALID_LOCALE_KEY("The following locale key is not valid: ")
-
-    ;
+    LOGGER_INVALID_LOCALE_KEY("The following locale key is not valid: ");
     String message;
-
+    
     SPUMessage(String message) {
         this.message = message;
     }
-
+    
     public String getMessage() {
         return this.message;
     }
-
+    
     public void setMessage(String message) {
         this.message = message;
     }

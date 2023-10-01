@@ -63,6 +63,9 @@ commands:
   rename:
     description: renames an item
     permission: spu.command.rename
+  repair:
+    description: repair an item, or many
+    permission: spu.command.repair
 permissions:
   spu.reload:
     description: Reloads the Simple Player Utils config and locale

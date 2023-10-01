@@ -21,13 +21,13 @@ import java.util.HashSet;
 import java.util.UUID;
 
 public class InventoryCloseListener implements Listener {
-
+    
     final HashMap<UUID, Inventory> inventoryHashMap = TrashCommand.getInvMap();
-
+    
     final HashSet<Material> blacklistedTrash = Defaults.getTrashBlacklist();
-
+    
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-
+    
     public void onInventoryClose(InventoryCloseEvent closeEvent) {
         UUID playerUUID = closeEvent.getPlayer().getUniqueId();
         Inventory closedInventory = closeEvent.getInventory();
@@ -36,7 +36,7 @@ public class InventoryCloseListener implements Listener {
         Inventory trashInventory = inventoryHashMap.get(playerUUID);
         if (trashInventory.isEmpty()) return;
         Player player = (Player) closeEvent.getPlayer();
-        ItemStack [] trashContents = trashInventory.getContents();
+        ItemStack[] trashContents = trashInventory.getContents();
         Location playerLocation = player.getLocation();
         ArrayList<ItemStack> blockedItemsToDrop = new ArrayList<>();
         //check if any items that are in the trash are blacklisted, if they are, add to arraylist
@@ -62,6 +62,6 @@ public class InventoryCloseListener implements Listener {
         } else {
             closeEvent.getPlayer().sendMessage(Util.parsePrefixOnly(SPUMessage.TRASH_COMMAND_FEEDBACK.getMessage()));
         }
-
+        
     }
 }
