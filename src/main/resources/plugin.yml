@@ -1,6 +1,6 @@
 name: SimplePlayerUtils
 version: '${project.version}'
-main: adhdmc.simpleplayerutils.SimplePlayerUtils
+main: simplexity.simpleplayerutils.SimplePlayerUtils
 api-version: 1.19
 authors: [ Rhythmic, Peashooter101 ]
 description: Utils for players
