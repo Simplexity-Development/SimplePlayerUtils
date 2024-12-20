@@ -1,3 +1,6 @@
+> [!IMPORTANT] 
+> This Plugin is no longer maintained, and is now separated into 2 plugins: [AdminHax](https://github.com/Simplexity-Development/AdminHax/tree/master) ([Modrinth Link](https://modrinth.com/plugin/admin-hax)) and [SimpleInventories](https://github.com/Simplexity-Development/SimpleInventories) ([Modrinth Link](https://modrinth.com/plugin/simpleinventories))
+
 # SimplePlayerUtils
 
 A plugin for Minecraft servers that provides various player utilities, including commands for toggling AFK status, enabling creative flight, and opening various workstations.
